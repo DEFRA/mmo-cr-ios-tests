@@ -1,0 +1,212 @@
+2026-10-07T17:00:08.625Z CLI info    Config : {"userName":"[REDACTED]","accessKey":"[REDACTED]","platforms":[{"platformName":"ios","appium:automationName":"XCUITest","deviceName":"iPhone 15","platformVersion":"17","projectName":"mmo-cr-ios-tests","buildName":"mmo-cr-ios-app","sessionName":"Sign in button","debug":true,"networkLogs":true,"wdioService":"9.35.0"}],"isNonBstackA11yWDIO":false,"app":"bs://ec38a1277cc28dec6c7b6f1d8a9b8a8985d20064","browserstackLocal":false,"testObservability":false,"testContextOptions":{"skipSessionName":false,"skipSessionStatus":false,"sessionNameOmitTestTitle":false,"sessionNamePrependTopLevelSuiteTitle":false,"sessionNameFormat":""},"buildTag":[]}
+2026-10-07T17:00:08.630Z CLI info    Should start debug utility: undefined
+2026-10-07T17:00:08.704Z CLI info [testhub:module]   [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  Starting testhub from 41237:0
+2026-10-07T17:00:08.706Z CLI info   [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  [PRODUCTION] Making POST request to https://sdk.browserstack.com
+2026-10-07T17:00:08.707Z CLI info   [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  [PRODUCTION] Making GET request to https://hub.browserstack.com
+2026-10-07T17:00:08.848Z CLI info   [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  [PRODUCTION] Making GET request to https://hub-euw.browserstack.com
+2026-10-07T17:00:08.848Z CLI info   [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  [PRODUCTION] Making GET request to https://hub-use.browserstack.com
+2026-10-07T17:00:08.848Z CLI info   [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  [PRODUCTION] Making GET request to https://hub-aps.browserstack.com
+2026-10-07T17:00:09.850Z CLI info [testhub:module]   [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  startBuild: response=ozux4ibi3ddkrzxhmpnfpmgphyyyagvjkgg3aiy8
+2026-10-07T17:00:09.853Z CLI info  [ozux4ibi3ddkrzxhmpnfpmgphyyyagvjkgg3aiy8]  [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  [PRODUCTION] Making POST request to https://api.browserstack.com
+2026-10-07T17:00:10.248Z CLI info  [ozux4ibi3ddkrzxhmpnfpmgphyyyagvjkgg3aiy8]  [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  [PRODUCTION] Making GET request to https://api.browserstack.com
+2026-10-07T17:00:10.536Z CLI error  [ozux4ibi3ddkrzxhmpnfpmgphyyyagvjkgg3aiy8]  [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  error invoking callback for eventName onStart: invalid percyToken=null
+2026-10-07T17:00:10.536Z CLI error  [ozux4ibi3ddkrzxhmpnfpmgphyyyagvjkgg3aiy8]  [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  Error: invalid percyToken=null
+    at /snapshot/browserstack-binary/cli/dist/index.js
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:00:10.537Z CLI info [appautomate:service]  [ozux4ibi3ddkrzxhmpnfpmgphyyyagvjkgg3aiy8]  [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  Using app: bs://ec38a1277cc28dec6c7b6f1d8a9b8a8985d20064
+2026-10-07T17:00:12.418Z CLI info [sdk:service]  [ozux4ibi3ddkrzxhmpnfpmgphyyyagvjkgg3aiy8]  [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  Driver initialized as primary driver: platformIndex=0
+2026-10-07T17:00:17.356Z CLI info  [ozux4ibi3ddkrzxhmpnfpmgphyyyagvjkgg3aiy8]  [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  [PRODUCTION] Making GET request to https://api.browserstack.com
+2026-10-07T17:00:17.360Z CLI info  [ozux4ibi3ddkrzxhmpnfpmgphyyyagvjkgg3aiy8]  [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  [PRODUCTION] Making PUT request to https://collector-observability.browserstack.com
+2026-10-07T17:00:17.695Z CLI error [testhub:module]  [ozux4ibi3ddkrzxhmpnfpmgphyyyagvjkgg3aiy8]  [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  stopBuild: request={"finished_at":"2026-10-07T17:00:17.356Z","finished_metadata":[],"custom_metadata":null} error=HTTPError: Response code 401 (Unauthorized)
+    at _0x3cb0f3.<anonymous> (/snapshot/browserstack-binary/cli/dist/index.js)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:00:17.696Z CLI error  [ozux4ibi3ddkrzxhmpnfpmgphyyyagvjkgg3aiy8]  [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  error invoking callback for eventName onStop: Response code 401 (Unauthorized)
+2026-10-07T17:00:17.696Z CLI error  [ozux4ibi3ddkrzxhmpnfpmgphyyyagvjkgg3aiy8]  [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  HTTPError: Response code 401 (Unauthorized)
+    at _0x3cb0f3.<anonymous> (/snapshot/browserstack-binary/cli/dist/index.js)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:00:17.697Z CLI info  [ozux4ibi3ddkrzxhmpnfpmgphyyyagvjkgg3aiy8]  [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  [PRODUCTION] Making POST request to https://api.browserstack.com
+2026-10-07T17:00:18.003Z CLI info [TEST REPORTING AND ANALYTICS:module]  [ozux4ibi3ddkrzxhmpnfpmgphyyyagvjkgg3aiy8]  [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  Visit https://automation.browserstack.com/builds/ozux4ibi3ddkrzxhmpnfpmgphyyyagvjkgg3aiy8 to view build report, insights, and many more debugging information all at one place!
+2026-10-07T17:00:18.003Z CLI info [sdk:service]  [ozux4ibi3ddkrzxhmpnfpmgphyyyagvjkgg3aiy8]  [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  ────── Test Reporting & Analytics Disabled ──────
+New Test Reporting and Analytics Dashboard visibilty is OFF for this build.
+Set testReporting: true in your browserstack.yml to dashboard-level build visibility
+──────────────────────────────────────────
+2026-10-07T17:00:18.007Z CLI info [main]  [ozux4ibi3ddkrzxhmpnfpmgphyyyagvjkgg3aiy8]  [71ecc49c-d8ef-4b09-b948-638bb3b2be75]  Received graceful signal termination (SIGTERM), performing cleanup
+2026-10-07T17:01:54.906Z CLI info    Config : {"userName":"[REDACTED]","accessKey":"[REDACTED]","platforms":[{"platformName":"ios","appium:automationName":"XCUITest","deviceName":"iPhone 17","platformVersion":"26","projectName":"mmo-cr-ios-tests","buildName":"mmo-cr-ios-app","sessionName":"Sign in button","debug":true,"networkLogs":true,"wdioService":"9.35.0"}],"isNonBstackA11yWDIO":false,"app":"bs://ec38a1277cc28dec6c7b6f1d8a9b8a8985d20064","browserstackLocal":false,"testObservability":false,"testContextOptions":{"skipSessionName":false,"skipSessionStatus":false,"sessionNameOmitTestTitle":false,"sessionNamePrependTopLevelSuiteTitle":false,"sessionNameFormat":""},"buildTag":[]}
+2026-10-07T17:01:54.909Z CLI info    Should start debug utility: undefined
+2026-10-07T17:01:54.977Z CLI info [testhub:module]   [a2ff53b4-efb9-4017-a580-d9e29218fde3]  Starting testhub from 42091:0
+2026-10-07T17:01:54.978Z CLI info   [a2ff53b4-efb9-4017-a580-d9e29218fde3]  [PRODUCTION] Making POST request to https://sdk.browserstack.com
+2026-10-07T17:01:54.978Z CLI info   [a2ff53b4-efb9-4017-a580-d9e29218fde3]  [PRODUCTION] Making GET request to https://hub.browserstack.com
+2026-10-07T17:01:55.211Z CLI info   [a2ff53b4-efb9-4017-a580-d9e29218fde3]  [PRODUCTION] Making GET request to https://hub-euw.browserstack.com
+2026-10-07T17:01:55.211Z CLI info   [a2ff53b4-efb9-4017-a580-d9e29218fde3]  [PRODUCTION] Making GET request to https://hub-use.browserstack.com
+2026-10-07T17:01:55.212Z CLI info   [a2ff53b4-efb9-4017-a580-d9e29218fde3]  [PRODUCTION] Making GET request to https://hub-aps.browserstack.com
+2026-10-07T17:01:55.707Z CLI info [testhub:module]   [a2ff53b4-efb9-4017-a580-d9e29218fde3]  startBuild: response=vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr
+2026-10-07T17:01:55.710Z CLI info  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  [PRODUCTION] Making POST request to https://api.browserstack.com
+2026-10-07T17:01:56.097Z CLI info  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  [PRODUCTION] Making GET request to https://api.browserstack.com
+2026-10-07T17:01:56.393Z CLI error  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  error invoking callback for eventName onStart: invalid percyToken=null
+2026-10-07T17:01:56.393Z CLI error  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  Error: invalid percyToken=null
+    at /snapshot/browserstack-binary/cli/dist/index.js
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:01:56.394Z CLI info [appautomate:service]  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  Using app: bs://ec38a1277cc28dec6c7b6f1d8a9b8a8985d20064
+2026-10-07T17:01:57.418Z CLI info [sdk:service]  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  Driver initialized as primary driver: platformIndex=0
+2026-10-07T17:02:22.783Z CLI error [TEST REPORTING AND ANALYTICS:service]  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  Error: unsupported language: ECMAScript
+    at _0x8fd7c3.forwardRequest (/snapshot/browserstack-binary/cli/dist/index.js)
+    at _0x8fd7c3.onTestSessionEvent (/snapshot/browserstack-binary/cli/dist/index.js)
+    at /snapshot/browserstack-binary/cli/dist/index.js
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:02:22.784Z CLI error [TEST REPORTING AND ANALYTICS:service]  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  Error: unsupported language: ECMAScript
+    at _0x8fd7c3.forwardRequest (/snapshot/browserstack-binary/cli/dist/index.js)
+    at _0x8fd7c3.onTestFrameworkEvent (/snapshot/browserstack-binary/cli/dist/index.js)
+    at /snapshot/browserstack-binary/cli/dist/index.js
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:02:25.476Z CLI error [TEST REPORTING AND ANALYTICS:service]  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  Error: unsupported language: ECMAScript
+    at _0x8fd7c3.forwardRequest (/snapshot/browserstack-binary/cli/dist/index.js)
+    at _0x8fd7c3.onTestFrameworkEvent (/snapshot/browserstack-binary/cli/dist/index.js)
+    at /snapshot/browserstack-binary/cli/dist/index.js
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:02:26.727Z CLI info  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  [PRODUCTION] Making GET request to https://api.browserstack.com
+2026-10-07T17:02:26.730Z CLI info  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  [PRODUCTION] Making PUT request to https://collector-observability.browserstack.com
+2026-10-07T17:02:27.044Z CLI error [testhub:module]  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  stopBuild: request={"finished_at":"2026-10-07T17:02:26.726Z","finished_metadata":[],"custom_metadata":null} error=HTTPError: Response code 401 (Unauthorized)
+    at _0x3cb0f3.<anonymous> (/snapshot/browserstack-binary/cli/dist/index.js)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:02:27.045Z CLI error  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  error invoking callback for eventName onStop: Response code 401 (Unauthorized)
+2026-10-07T17:02:27.045Z CLI error  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  HTTPError: Response code 401 (Unauthorized)
+    at _0x3cb0f3.<anonymous> (/snapshot/browserstack-binary/cli/dist/index.js)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:02:27.047Z CLI info  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  [PRODUCTION] Making POST request to https://api.browserstack.com
+2026-10-07T17:02:27.342Z CLI info [TEST REPORTING AND ANALYTICS:module]  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  Visit https://automation.browserstack.com/builds/vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr to view build report, insights, and many more debugging information all at one place!
+2026-10-07T17:02:27.342Z CLI info [sdk:service]  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  ────── Test Reporting & Analytics Disabled ──────
+New Test Reporting and Analytics Dashboard visibilty is OFF for this build.
+Set testReporting: true in your browserstack.yml to dashboard-level build visibility
+──────────────────────────────────────────
+2026-10-07T17:02:27.350Z CLI info [main]  [vz1nxqrqbtbkwipagjluzrl9ldfvqtphyrofdlqr]  [a2ff53b4-efb9-4017-a580-d9e29218fde3]  Received graceful signal termination (SIGTERM), performing cleanup
+2026-10-07T17:06:05.430Z CLI info    Config : {"userName":"[REDACTED]","accessKey":"[REDACTED]","platforms":[{"platformName":"ios","appium:automationName":"XCUITest","deviceName":"iPhone 17","platformVersion":"26","projectName":"mmo-cr-ios-tests","buildName":"mmo-cr-ios-app","sessionName":"Sign in button","debug":true,"networkLogs":true,"wdioService":"9.35.0"}],"isNonBstackA11yWDIO":false,"app":"bs://ec38a1277cc28dec6c7b6f1d8a9b8a8985d20064","browserstackLocal":false,"testObservability":false,"testContextOptions":{"skipSessionName":false,"skipSessionStatus":false,"sessionNameOmitTestTitle":false,"sessionNamePrependTopLevelSuiteTitle":false,"sessionNameFormat":""},"buildTag":[]}
+2026-10-07T17:06:05.433Z CLI info    Should start debug utility: undefined
+2026-10-07T17:06:05.529Z CLI info [testhub:module]   [9f268e1b-39a7-4654-8e31-94784e25fba3]  Starting testhub from 43056:0
+2026-10-07T17:06:05.530Z CLI info   [9f268e1b-39a7-4654-8e31-94784e25fba3]  [PRODUCTION] Making POST request to https://sdk.browserstack.com
+2026-10-07T17:06:05.531Z CLI info   [9f268e1b-39a7-4654-8e31-94784e25fba3]  [PRODUCTION] Making GET request to https://hub.browserstack.com
+2026-10-07T17:06:05.647Z CLI info   [9f268e1b-39a7-4654-8e31-94784e25fba3]  [PRODUCTION] Making GET request to https://hub-euw.browserstack.com
+2026-10-07T17:06:05.647Z CLI info   [9f268e1b-39a7-4654-8e31-94784e25fba3]  [PRODUCTION] Making GET request to https://hub-use.browserstack.com
+2026-10-07T17:06:05.647Z CLI info   [9f268e1b-39a7-4654-8e31-94784e25fba3]  [PRODUCTION] Making GET request to https://hub-aps.browserstack.com
+2026-10-07T17:06:06.549Z CLI info [testhub:module]   [9f268e1b-39a7-4654-8e31-94784e25fba3]  startBuild: response=fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n
+2026-10-07T17:06:06.552Z CLI info  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  [PRODUCTION] Making POST request to https://api.browserstack.com
+2026-10-07T17:06:06.956Z CLI info  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  [PRODUCTION] Making GET request to https://api.browserstack.com
+2026-10-07T17:06:07.261Z CLI error  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  error invoking callback for eventName onStart: invalid percyToken=null
+2026-10-07T17:06:07.261Z CLI error  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  Error: invalid percyToken=null
+    at /snapshot/browserstack-binary/cli/dist/index.js
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:06:07.261Z CLI info [appautomate:service]  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  Using app: bs://ec38a1277cc28dec6c7b6f1d8a9b8a8985d20064
+2026-10-07T17:06:08.726Z CLI info [sdk:service]  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  Driver initialized as primary driver: platformIndex=0
+2026-10-07T17:06:31.110Z CLI error [TEST REPORTING AND ANALYTICS:service]  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  Error: unsupported language: ECMAScript
+    at _0x8fd7c3.forwardRequest (/snapshot/browserstack-binary/cli/dist/index.js)
+    at _0x8fd7c3.onTestSessionEvent (/snapshot/browserstack-binary/cli/dist/index.js)
+    at /snapshot/browserstack-binary/cli/dist/index.js
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:06:31.111Z CLI error [TEST REPORTING AND ANALYTICS:service]  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  Error: unsupported language: ECMAScript
+    at _0x8fd7c3.forwardRequest (/snapshot/browserstack-binary/cli/dist/index.js)
+    at _0x8fd7c3.onTestFrameworkEvent (/snapshot/browserstack-binary/cli/dist/index.js)
+    at /snapshot/browserstack-binary/cli/dist/index.js
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:06:33.493Z CLI error [TEST REPORTING AND ANALYTICS:service]  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  Error: unsupported language: ECMAScript
+    at _0x8fd7c3.forwardRequest (/snapshot/browserstack-binary/cli/dist/index.js)
+    at _0x8fd7c3.onTestFrameworkEvent (/snapshot/browserstack-binary/cli/dist/index.js)
+    at /snapshot/browserstack-binary/cli/dist/index.js
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:06:34.843Z CLI info  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  [PRODUCTION] Making GET request to https://api.browserstack.com
+2026-10-07T17:06:34.846Z CLI info  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  [PRODUCTION] Making PUT request to https://collector-observability.browserstack.com
+2026-10-07T17:06:35.169Z CLI error [testhub:module]  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  stopBuild: request={"finished_at":"2026-10-07T17:06:34.842Z","finished_metadata":[],"custom_metadata":null} error=HTTPError: Response code 401 (Unauthorized)
+    at _0x3cb0f3.<anonymous> (/snapshot/browserstack-binary/cli/dist/index.js)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:06:35.169Z CLI error  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  error invoking callback for eventName onStop: Response code 401 (Unauthorized)
+2026-10-07T17:06:35.169Z CLI error  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  HTTPError: Response code 401 (Unauthorized)
+    at _0x3cb0f3.<anonymous> (/snapshot/browserstack-binary/cli/dist/index.js)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:06:35.171Z CLI info  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  [PRODUCTION] Making POST request to https://api.browserstack.com
+2026-10-07T17:06:35.511Z CLI info [TEST REPORTING AND ANALYTICS:module]  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  Visit https://automation.browserstack.com/builds/fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n to view build report, insights, and many more debugging information all at one place!
+2026-10-07T17:06:35.512Z CLI info [sdk:service]  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  ────── Test Reporting & Analytics Disabled ──────
+New Test Reporting and Analytics Dashboard visibilty is OFF for this build.
+Set testReporting: true in your browserstack.yml to dashboard-level build visibility
+──────────────────────────────────────────
+2026-10-07T17:06:35.518Z CLI info [main]  [fpiygl3nnws6ohx7v2jwuilu2gxmjml2deesc89n]  [9f268e1b-39a7-4654-8e31-94784e25fba3]  Received graceful signal termination (SIGTERM), performing cleanup
+2026-10-07T17:14:22.996Z CLI info    Config : {"userName":"[REDACTED]","accessKey":"[REDACTED]","platforms":[{"platformName":"ios","appium:automationName":"XCUITest","deviceName":"iPhone 17","platformVersion":"26","projectName":"mmo-cr-ios-tests","buildName":"mmo-cr-ios-app","sessionName":"Sign in button","debug":true,"networkLogs":true,"wdioService":"9.35.0"}],"isNonBstackA11yWDIO":false,"app":"bs://ec38a1277cc28dec6c7b6f1d8a9b8a8985d20064","browserstackLocal":true,"forceLocal":true,"testObservability":false,"testContextOptions":{"skipSessionName":false,"skipSessionStatus":false,"sessionNameOmitTestTitle":false,"sessionNamePrependTopLevelSuiteTitle":false,"sessionNameFormat":""},"buildTag":[]}
+2026-10-07T17:14:23.008Z CLI info    Should start debug utility: undefined
+2026-10-07T17:14:23.085Z CLI info [testhub:module]   [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  Starting testhub from 44343:0
+2026-10-07T17:14:23.085Z CLI info   [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  [PRODUCTION] Making POST request to https://sdk.browserstack.com
+2026-10-07T17:14:23.086Z CLI info   [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  [PRODUCTION] Making GET request to https://hub.browserstack.com
+2026-10-07T17:14:23.203Z CLI info   [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  [PRODUCTION] Making GET request to https://hub-euw.browserstack.com
+2026-10-07T17:14:23.203Z CLI info   [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  [PRODUCTION] Making GET request to https://hub-use.browserstack.com
+2026-10-07T17:14:23.204Z CLI info   [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  [PRODUCTION] Making GET request to https://hub-aps.browserstack.com
+2026-10-07T17:14:23.969Z CLI info [testhub:module]   [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  startBuild: response=ssv9rbh15i6pat2xsbabn39d3nk2rvrc008iezwq
+2026-10-07T17:14:23.972Z CLI info  [ssv9rbh15i6pat2xsbabn39d3nk2rvrc008iezwq]  [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  [PRODUCTION] Making POST request to https://api.browserstack.com
+2026-10-07T17:14:24.378Z CLI info  [ssv9rbh15i6pat2xsbabn39d3nk2rvrc008iezwq]  [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  [PRODUCTION] Making GET request to https://api.browserstack.com
+2026-10-07T17:14:24.650Z CLI error  [ssv9rbh15i6pat2xsbabn39d3nk2rvrc008iezwq]  [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  error invoking callback for eventName onStart: invalid percyToken=null
+2026-10-07T17:14:24.650Z CLI error  [ssv9rbh15i6pat2xsbabn39d3nk2rvrc008iezwq]  [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  Error: invalid percyToken=null
+    at /snapshot/browserstack-binary/cli/dist/index.js
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:14:29.966Z CLI info [appautomate:service]  [ssv9rbh15i6pat2xsbabn39d3nk2rvrc008iezwq]  [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  Using app: bs://ec38a1277cc28dec6c7b6f1d8a9b8a8985d20064
+2026-10-07T17:14:31.919Z CLI info [sdk:service]  [ssv9rbh15i6pat2xsbabn39d3nk2rvrc008iezwq]  [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  Driver initialized as primary driver: platformIndex=0
+2026-10-07T17:14:36.734Z CLI info  [ssv9rbh15i6pat2xsbabn39d3nk2rvrc008iezwq]  [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  [PRODUCTION] Making GET request to https://api.browserstack.com
+2026-10-07T17:14:36.738Z CLI info  [ssv9rbh15i6pat2xsbabn39d3nk2rvrc008iezwq]  [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  [PRODUCTION] Making PUT request to https://collector-observability.browserstack.com
+2026-10-07T17:14:37.084Z CLI error [testhub:module]  [ssv9rbh15i6pat2xsbabn39d3nk2rvrc008iezwq]  [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  stopBuild: request={"finished_at":"2026-10-07T17:14:36.733Z","finished_metadata":[],"custom_metadata":null} error=HTTPError: Response code 401 (Unauthorized)
+    at _0x3cb0f3.<anonymous> (/snapshot/browserstack-binary/cli/dist/index.js)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:14:37.084Z CLI error  [ssv9rbh15i6pat2xsbabn39d3nk2rvrc008iezwq]  [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  error invoking callback for eventName onStop: Response code 401 (Unauthorized)
+2026-10-07T17:14:37.084Z CLI error  [ssv9rbh15i6pat2xsbabn39d3nk2rvrc008iezwq]  [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  HTTPError: Response code 401 (Unauthorized)
+    at _0x3cb0f3.<anonymous> (/snapshot/browserstack-binary/cli/dist/index.js)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T17:14:37.085Z CLI info  [ssv9rbh15i6pat2xsbabn39d3nk2rvrc008iezwq]  [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  [PRODUCTION] Making POST request to https://api.browserstack.com
+2026-10-07T17:14:37.400Z CLI info [TEST REPORTING AND ANALYTICS:module]  [ssv9rbh15i6pat2xsbabn39d3nk2rvrc008iezwq]  [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  Visit https://automation.browserstack.com/builds/ssv9rbh15i6pat2xsbabn39d3nk2rvrc008iezwq to view build report, insights, and many more debugging information all at one place!
+2026-10-07T17:14:37.483Z CLI info [sdk:service]  [ssv9rbh15i6pat2xsbabn39d3nk2rvrc008iezwq]  [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  ────── Test Reporting & Analytics Disabled ──────
+New Test Reporting and Analytics Dashboard visibilty is OFF for this build.
+Set testReporting: true in your browserstack.yml to dashboard-level build visibility
+──────────────────────────────────────────
+2026-10-07T17:14:37.485Z CLI info [main]  [ssv9rbh15i6pat2xsbabn39d3nk2rvrc008iezwq]  [671351ed-6ba4-42c2-a3ea-f9cf6c830092]  Received graceful signal termination (SIGTERM), performing cleanup
+2026-10-07T18:06:10.001Z CLI info    Config : {"platforms":[{"platformName":"ios","appium:automationName":"XCUITest","deviceName":"iPhone 17","platformVersion":"26","projectName":"mmo-cr-ios-tests","buildName":"mmo-cr-ios-app","sessionName":"Sign in button","debug":true,"networkLogs":true,"wdioService":"9.35.0"}],"isNonBstackA11yWDIO":true,"app":"bs://ec38a1277cc28dec6c7b6f1d8a9b8a8985d20064","browserstackLocal":true,"testObservability":false,"browserStackLocalOptions":{"forceLocal":true},"testContextOptions":{"skipSessionName":false,"skipSessionStatus":false,"sessionNameOmitTestTitle":false,"sessionNamePrependTopLevelSuiteTitle":false,"sessionNameFormat":""},"buildTag":[]}
+2026-10-07T18:06:10.013Z CLI info [main]    Received graceful signal termination (SIGTERM), performing cleanup
+2026-10-07T19:08:38.149Z CLI info    Config : {"userName":"[REDACTED]","accessKey":"[REDACTED]","platforms":[{"platformName":"ios","appium:automationName":"XCUITest","deviceName":"iPhone 17","platformVersion":"26","projectName":"mmo-cr-ios-tests","buildName":"mmo-cr-ios-app","sessionName":"Sign in button","debug":true,"networkLogs":true,"wdioService":"9.35.0"}],"isNonBstackA11yWDIO":false,"app":"bs://ec38a1277cc28dec6c7b6f1d8a9b8a8985d20064","browserstackLocal":true,"testObservability":false,"browserStackLocalOptions":{"forceLocal":true},"testContextOptions":{"skipSessionName":false,"skipSessionStatus":false,"sessionNameOmitTestTitle":false,"sessionNamePrependTopLevelSuiteTitle":false,"sessionNameFormat":""},"buildTag":[]}
+2026-10-07T19:08:38.164Z CLI info    Should start debug utility: undefined
+2026-10-07T19:08:38.246Z CLI info [testhub:module]   [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  Starting testhub from 50332:0
+2026-10-07T19:08:38.246Z CLI info   [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  [PRODUCTION] Making POST request to https://sdk.browserstack.com
+2026-10-07T19:08:38.251Z CLI info   [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  [PRODUCTION] Making GET request to https://hub.browserstack.com
+2026-10-07T19:08:38.373Z CLI info   [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  [PRODUCTION] Making GET request to https://hub-euw.browserstack.com
+2026-10-07T19:08:38.374Z CLI info   [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  [PRODUCTION] Making GET request to https://hub-use.browserstack.com
+2026-10-07T19:08:38.374Z CLI info   [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  [PRODUCTION] Making GET request to https://hub-aps.browserstack.com
+2026-10-07T19:08:38.930Z CLI info [testhub:module]   [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  startBuild: response=ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3
+2026-10-07T19:08:38.933Z CLI info  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  [PRODUCTION] Making POST request to https://api.browserstack.com
+2026-10-07T19:08:39.299Z CLI info  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  [PRODUCTION] Making GET request to https://api.browserstack.com
+2026-10-07T19:08:39.616Z CLI error  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  error invoking callback for eventName onStart: invalid percyToken=null
+2026-10-07T19:08:39.616Z CLI error  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  Error: invalid percyToken=null
+    at /snapshot/browserstack-binary/cli/dist/index.js
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T19:08:44.790Z CLI info [appautomate:service]  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  Using app: bs://ec38a1277cc28dec6c7b6f1d8a9b8a8985d20064
+2026-10-07T19:08:46.941Z CLI info [sdk:service]  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  Driver initialized as primary driver: platformIndex=0
+2026-10-07T19:09:07.876Z CLI error [TEST REPORTING AND ANALYTICS:service]  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  Error: unsupported language: ECMAScript
+    at _0x8fd7c3.forwardRequest (/snapshot/browserstack-binary/cli/dist/index.js)
+    at _0x8fd7c3.onTestSessionEvent (/snapshot/browserstack-binary/cli/dist/index.js)
+    at /snapshot/browserstack-binary/cli/dist/index.js
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T19:09:07.877Z CLI error [TEST REPORTING AND ANALYTICS:service]  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  Error: unsupported language: ECMAScript
+    at _0x8fd7c3.forwardRequest (/snapshot/browserstack-binary/cli/dist/index.js)
+    at _0x8fd7c3.onTestFrameworkEvent (/snapshot/browserstack-binary/cli/dist/index.js)
+    at /snapshot/browserstack-binary/cli/dist/index.js
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T19:09:10.902Z CLI error [TEST REPORTING AND ANALYTICS:service]  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  Error: unsupported language: ECMAScript
+    at _0x8fd7c3.forwardRequest (/snapshot/browserstack-binary/cli/dist/index.js)
+    at _0x8fd7c3.onTestFrameworkEvent (/snapshot/browserstack-binary/cli/dist/index.js)
+    at /snapshot/browserstack-binary/cli/dist/index.js
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T19:09:12.174Z CLI info  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  [PRODUCTION] Making GET request to https://api.browserstack.com
+2026-10-07T19:09:12.178Z CLI info  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  [PRODUCTION] Making PUT request to https://collector-observability.browserstack.com
+2026-10-07T19:09:12.509Z CLI error [testhub:module]  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  stopBuild: request={"finished_at":"2026-10-07T19:09:12.174Z","finished_metadata":[],"custom_metadata":null} error=HTTPError: Response code 401 (Unauthorized)
+    at _0x3cb0f3.<anonymous> (/snapshot/browserstack-binary/cli/dist/index.js)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T19:09:12.509Z CLI error  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  error invoking callback for eventName onStop: Response code 401 (Unauthorized)
+2026-10-07T19:09:12.509Z CLI error  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  HTTPError: Response code 401 (Unauthorized)
+    at _0x3cb0f3.<anonymous> (/snapshot/browserstack-binary/cli/dist/index.js)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2026-10-07T19:09:12.511Z CLI info  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  [PRODUCTION] Making POST request to https://api.browserstack.com
+2026-10-07T19:09:12.859Z CLI info [TEST REPORTING AND ANALYTICS:module]  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  Visit https://automation.browserstack.com/builds/ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3 to view build report, insights, and many more debugging information all at one place!
+2026-10-07T19:09:12.942Z CLI info [sdk:service]  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  ────── Test Reporting & Analytics Disabled ──────
+New Test Reporting and Analytics Dashboard visibilty is OFF for this build.
+Set testReporting: true in your browserstack.yml to dashboard-level build visibility
+──────────────────────────────────────────
+2026-10-07T19:09:12.945Z CLI info [main]  [ihxeiz1q8pbryffzd5foyachnlmwbfwmebaop0x3]  [2abdb9c2-b601-4ce7-8b63-fb347b9b0f57]  Received graceful signal termination (SIGTERM), performing cleanup
