@@ -7,7 +7,7 @@ import { configs as wdioConfig } from 'eslint-plugin-wdio'
 
 export default defineConfig([
   {
-    ignores: ['allure-results/', 'allure-report/', 'docker/']
+    ignores: ['allure-results/', 'allure-report/']
   },
 
   js.configs.recommended,
