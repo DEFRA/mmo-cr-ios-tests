@@ -49,8 +49,7 @@ export const config = {
     [
       'browserstack',
       {
-        app:
-          process.env.BROWSERSTACK_APP_ID,
+        app: process.env.BROWSERSTACK_APP_ID,
         // Tunnel device traffic through this machine (and its VPN)
         browserstackLocal: true,
         opts: {
