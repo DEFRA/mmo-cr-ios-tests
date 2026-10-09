@@ -13,3 +13,5 @@ allure-results/
 FAILED
 .env
 .env.*
+logs/
+log/

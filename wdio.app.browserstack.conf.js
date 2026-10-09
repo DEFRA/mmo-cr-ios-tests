@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 
 const oneMinute = 60 * 1000
+const failures = []
 
 // Variables already set in the shell take precedence over the file
 const envFile = process.env.ENV_FILE || '.env'
@@ -73,7 +74,20 @@ export const config = {
 
   afterTest: async function (test, context, { error }) {
     if (error) {
+      failures.push(`${test.title}: ${error.message}`)
       await browser.takeScreenshot()
     }
+  },
+
+  // The service fails to detect the app session, so mark status here
+  after: async function () {
+    const status = failures.length ? 'failed' : 'passed'
+    const reason = failures.join('; ').slice(0, 250) || 'All tests passed'
+    await browser.execute(
+      `browserstack_executor: ${JSON.stringify({
+        action: 'setSessionStatus',
+        arguments: { status, reason }
+      })}`
+    )
   }
 }
