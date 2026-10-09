@@ -1,50 +1,46 @@
 import fs from 'node:fs'
 
-/**
- * Proxy enabled using NODE_USE_ENV_PROXY=1
- * This is required for the test suite to be able to talk to BrowserStack.
- */
-
 const oneMinute = 60 * 1000
+const failures = []
+
+// Variables already set in the shell take precedence over the file
+const envFile = process.env.ENV_FILE || '.env'
+if (fs.existsSync(envFile)) {
+  process.loadEnvFile(envFile)
+}
+
+if (!process.env.BROWSERSTACK_USERNAME || !process.env.BROWSERSTACK_KEY) {
+  throw new Error(
+    `Set BROWSERSTACK_USERNAME and BROWSERSTACK_KEY in your shell or in ${envFile}`
+  )
+}
+
+// Set on the CDP Portal; locally the tunnel uses this machine's network (and VPN)
+const proxyUrl = process.env.HTTPS_PROXY || process.env.HTTP_PROXY
+const proxy = proxyUrl ? new URL(proxyUrl) : null
 
 export const config = {
-  //
-  // ====================
-  // Runner Configuration
-  // ====================
-  // WebdriverIO supports running e2e tests as well as unit and component tests.
   runner: 'local',
-  //
-  // Set a base URL in order to shorten url command calls. If your `url` parameter starts
-  // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
-  // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
-  // gets prepended directly.
-  baseUrl: `https://mmo-cr-ios-tests.${process.env.ENVIRONMENT}.cdp-int.defra.cloud`,
 
-  // You will need to provide your own BrowserStack credentials.
-  // These should be added as secrets to the test suite.
   user: process.env.BROWSERSTACK_USERNAME,
   key: process.env.BROWSERSTACK_KEY,
 
-  // Tests to run
-  specs: ['./test/specs/**/*.js'],
-  // Tests to exclude
-  exclude: [],
+  specs: ['./test/app/specs/**/*.js'],
   maxInstances: 1,
-
-  commonCapabilities: {
-    'bstack:options': {
-      buildName: `mmo-cr-ios-tests-${process.env.ENVIRONMENT}` // configure as required
-    }
-  },
 
   capabilities: [
     {
-      browserName: 'Chrome', // Set as required
+      platformName: 'ios',
+      'appium:automationName': 'XCUITest',
       'bstack:options': {
-        browserVersion: 'latest',
-        os: 'Windows',
-        osVersion: '11'
+        // App requires iOS 18+
+        deviceName: process.env.BROWSERSTACK_DEVICE || 'iPhone 17',
+        platformVersion: process.env.BROWSERSTACK_OS_VERSION || '26',
+        projectName: 'mmo-cr-ios-tests',
+        buildName: 'mmo-cr-ios-app',
+        sessionName: 'Sign in button',
+        debug: true,
+        networkLogs: true
       }
     }
   ],
@@ -53,32 +49,28 @@ export const config = {
     [
       'browserstack',
       {
-        testObservability: true, // Disable if you do not want to use the browserstack test observer functionality
-        testObservabilityOptions: {
-          user: process.env.BROWSERSTACK_USER,
-          key: process.env.BROWSERSTACK_KEY,
-          projectName: 'cdp-node-env-test-suite', // should match project in browserstack
-          buildName: `mmo-cr-ios-tests-${process.env.ENVIRONMENT}`
-        },
-        acceptInsecureCerts: true,
-        forceLocal: false,
+        app:
+          process.env.BROWSERSTACK_APP_ID,
+        // Tunnel device traffic through this machine (and its VPN)
         browserstackLocal: true,
         opts: {
-          proxyHost: 'localhost',
-          proxyPort: 3128
-        }
+          forceLocal: true,
+          ...(proxy && {
+            proxyHost: proxy.hostname,
+            proxyPort: Number(proxy.port)
+          })
+        },
+        testObservability: false
       }
     ]
   ],
 
   logLevel: 'info',
-
-  // Number of failures before the test suite bails.
   bail: 0,
-  waitforTimeout: 10000,
-  waitforInterval: 200,
-  connectionRetryTimeout: 6000,
-  connectionRetryCount: 3,
+  waitforTimeout: 20000,
+  waitforInterval: 500,
+  connectionRetryTimeout: 2 * oneMinute,
+  connectionRetryCount: 2,
 
   framework: 'mocha',
 
@@ -101,18 +93,28 @@ export const config = {
     ]
   ],
 
-  // Options to be passed to Mocha.
-  // See the full list at http://mochajs.org/
   mochaOpts: {
     ui: 'bdd',
-    timeout: oneMinute
+    timeout: 3 * oneMinute
   },
 
-  // Hooks
   afterTest: async function (test, context, { error }) {
     if (error) {
+      failures.push(`${test.title}: ${error.message}`)
       await browser.takeScreenshot()
     }
+  },
+
+  // The service fails to detect the app session, so mark status here
+  after: async function () {
+    const status = failures.length ? 'failed' : 'passed'
+    const reason = failures.join('; ').slice(0, 250) || 'All tests passed'
+    await browser.execute(
+      `browserstack_executor: ${JSON.stringify({
+        action: 'setSessionStatus',
+        arguments: { status, reason }
+      })}`
+    )
   },
 
   onComplete: function (exitCode, config, capabilities, results) {

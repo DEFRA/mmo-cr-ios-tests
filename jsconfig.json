@@ -1,11 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2020",
-    "baseUrl": "./",
-    "paths": {
-      "#page-objects/*": ["./test/page-objects/*"],
-      "#components/*": ["./test/components/*"]
-    }
+    "target": "es2020"
   },
-  "exclude": ["node_modules", "build", "docker"]
+  "exclude": ["node_modules", "build"]
 }
