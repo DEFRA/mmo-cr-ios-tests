@@ -25,7 +25,7 @@ export const config = {
   user: process.env.BROWSERSTACK_USERNAME,
   key: process.env.BROWSERSTACK_KEY,
 
-  specs: ['./test/app/specs/**/*.js'],
+  specs: ['./test/specs/**/*.e2e.js'],
   maxInstances: 1,
 
   capabilities: [
@@ -38,7 +38,6 @@ export const config = {
         platformVersion: process.env.BROWSERSTACK_OS_VERSION || '26',
         projectName: 'mmo-cr-ios-tests',
         buildName: 'mmo-cr-ios-app',
-        sessionName: 'Sign in button',
         debug: true,
         networkLogs: true
       }
@@ -97,6 +96,17 @@ export const config = {
     timeout: 3 * oneMinute
   },
 
+  // Each spec file runs in its own BrowserStack session, named after its top-level suite
+  beforeSuite: async function (suite) {
+    if (suite.parent || !browser.sessionId) return
+    await browser.execute(
+      `browserstack_executor: ${JSON.stringify({
+        action: 'setSessionName',
+        arguments: { name: suite.title }
+      })}`
+    )
+  },
+
   afterTest: async function (test, context, { error }) {
     if (error) {
       failures.push(`${test.title}: ${error.message}`)
@@ -106,6 +116,7 @@ export const config = {
 
   // The service fails to detect the app session, so mark status here
   after: async function () {
+    if (!browser.sessionId) return
     const status = failures.length ? 'failed' : 'passed'
     const reason = failures.join('; ').slice(0, 250) || 'All tests passed'
     await browser.execute(

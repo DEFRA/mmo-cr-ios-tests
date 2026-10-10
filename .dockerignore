@@ -3,3 +3,6 @@ Dockerfile
 .git
 .github
 .husky
+apps
+.ios-app-src
+.ios-app-build

@@ -36,13 +36,40 @@ npm install
 
 ### Running the tests
 
-The app tests (`test/app/specs`) run on a BrowserStack real device using `wdio.browserstack.conf.js`:
+The app tests run on a BrowserStack real device using `wdio.browserstack.conf.js`:
 
 ```bash
 npm run test:browserstack
 ```
 
-Set `BROWSERSTACK_USERNAME` and `BROWSERSTACK_KEY` in your shell or in `.env`. Optional overrides: `BROWSERSTACK_APP_ID`, `BROWSERSTACK_DEVICE`, `BROWSERSTACK_OS_VERSION`.
+Set `BROWSERSTACK_USERNAME`, `BROWSERSTACK_KEY` and `BROWSERSTACK_APP_ID` in your shell or in `.env`. Optional overrides: `BROWSERSTACK_DEVICE`, `BROWSERSTACK_OS_VERSION`, `APP_BUNDLE_ID`.
+
+### Running on the iOS Simulator
+
+Requires Xcode and Appium with the XCUITest driver (`npm i -g appium && appium driver install xcuitest`).
+
+```bash
+./bin/build-simulator-app.sh   # builds DEFRA/mmo-cr-ios main into ./apps/record-catch.app
+npm run test:local
+```
+
+Optional overrides: `SIMULATOR_DEVICE` (default `iPhone 17`), `SIMULATOR_OS_VERSION` (default `27.0`), `APP_PATH`.
+
+### Test structure
+
+```
+test/
+  specs/            one file per feature; journeys/ drives the real app end to end
+  screens/          screen objects, located by the app's accessibility identifiers
+  support/
+    app.js          launchApp(Seam.x) relaunches the app, optionally seeded at a screen
+    selectors.js    selector helpers (byId, byText, ...)
+    test-data.js    stub data the app ships with
+```
+
+- Feature specs use the app's `-uiTest*` launch arguments (`Seam` in `test/support/app.js`) to open a screen directly with known data, so each test is independent. Keep `Seam` in step with `LaunchArguments.swift` in [DEFRA/mmo-cr-ios](https://github.com/DEFRA/mmo-cr-ios).
+- Locate elements by accessibility identifier (`CatchRecord.<screen>.<element>`), not by copy, so tests survive text and Welsh-language changes.
+- To cover a new catch-record screen, add one line to `test/screens/catch-record.screens.js` (`new JourneyScreen('CatchRecord.<screen>')`) and a spec under `test/specs/catch-record/`.
 
 ## Production
 

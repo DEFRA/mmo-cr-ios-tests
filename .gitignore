@@ -15,3 +15,6 @@ FAILED
 .env.*
 logs/
 log/
+apps/
+.ios-app-src/
+.ios-app-build/

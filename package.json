@@ -6,9 +6,14 @@
   "engines": {
     "node": ">=24"
   },
+  "imports": {
+    "#screens/*": "./test/screens/*",
+    "#support/*": "./test/support/*"
+  },
   "scripts": {
     "clean": "rm -rf allure-results && rm -rf allure-report",
     "test:browserstack": "npm run clean && NODE_USE_ENV_PROXY=1 wdio run wdio.browserstack.conf.js",
+    "test:local": "npm run clean && wdio run wdio.local.conf.js",
     "format": "prettier --write 'test/**/*.js' '**/*.{js,md,json,config.js}'",
     "format:check": "prettier --check 'test/**/*.js' '**/*.{js,md,json,config.js}'",
     "git:pre-commit-hook": "npm run format:check && npm run lint",
@@ -34,6 +39,7 @@
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
+    "@wdio/appium-service": "9.31.2",
     "eslint": "10.9.1",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-prettier": "5.5.6",

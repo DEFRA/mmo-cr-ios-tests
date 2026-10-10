@@ -1,2 +1,5 @@
 package-lock.json
 node_modules
+apps
+.ios-app-src
+.ios-app-build
