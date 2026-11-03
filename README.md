@@ -3,13 +3,13 @@ mmo-cr-ios-tests
 WDIO + Appium tests for the native iOS app, run on BrowserStack real devices.
 
 - [Local](#local-development)
-  - [Requirements](#requirements)
-    - [Node.js](#nodejs)
-  - [Setup](#setup)
-  - [Running the tests](#running-the-tests)
+    - [Requirements](#requirements)
+        - [Node.js](#nodejs)
+    - [Setup](#setup)
+    - [Running the tests](#running-the-tests)
 - [Production](#production)
 - [Licence](#licence)
-  - [About the licence](#about-the-licence)
+    - [About the licence](#about-the-licence)
 
 ## Local Development
 
@@ -36,13 +36,25 @@ npm install
 
 ### Running the tests
 
-The app tests (`test/app/specs/**/*.ts`) run on a BrowserStack real device using `wdio.browserstack.conf.ts`:
+Specs live in `test/ios/specs/**/*.spec.ts`. Configs live in `config/`, sharing `config/wdio.base.conf.ts`. Variables can be set in your shell or in `.env`.
+
+#### Local simulator/device (Appium)
+
+Requires Xcode and Appium with the XCUITest driver (`npm i -g appium && appium driver install xcuitest`). Place the `.ipa`/`.app` in `./app`, then:
+
+```bash
+npm run test:ios
+```
+
+Optional: `IOS_DEVICE_NAME`, `IOS_PLATFORM_VERSION`, `IOS_UDID`, `IOS_BUNDLE_ID` (uninstalls the app first on a simulator), `APPIUM_NO_RESET`, `APPIUM_PORT`.
+
+#### BrowserStack
 
 ```bash
 npm run test:browserstack
 ```
 
-Set `BROWSERSTACK_USERNAME` and `BROWSERSTACK_KEY` in your shell or in `.env`. Optional overrides: `BROWSERSTACK_APP_ID`, `BROWSERSTACK_DEVICE`, `BROWSERSTACK_OS_VERSION`.
+Requires `BROWSERSTACK_USERNAME`, `BROWSERSTACK_ACCESS_KEY` and `BROWSERSTACK_IOS_APP_URL` (the `bs://...` URL of an app already uploaded to BrowserStack). Optional: `BROWSERSTACK_MAX_INSTANCES` (default 2, must not exceed the plan's parallel sessions).
 
 ## Production
 
