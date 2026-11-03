@@ -8,10 +8,11 @@
   },
   "scripts": {
     "clean": "rm -rf allure-results && rm -rf allure-report",
-    "test:browserstack": "npm run clean && NODE_USE_ENV_PROXY=1 wdio run wdio.browserstack.conf.js",
-    "format": "prettier --write 'test/**/*.js' '**/*.{js,md,json,config.js}'",
-    "format:check": "prettier --check 'test/**/*.js' '**/*.{js,md,json,config.js}'",
-    "git:pre-commit-hook": "npm run format:check && npm run lint",
+    "test:browserstack": "npm run clean && NODE_USE_ENV_PROXY=1 wdio run wdio.browserstack.conf.ts",
+    "format": "prettier --write '**/*.{ts,md,json}'",
+    "format:check": "prettier --check '**/*.{ts,md,json}'",
+    "typecheck": "tsc",
+    "git:pre-commit-hook": "npm run format:check && npm run lint && npm run typecheck",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "postinstall": "npm run setup:husky",
@@ -34,11 +35,17 @@
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
+    "@types/node": "26.6.5",
     "eslint": "10.9.1",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-prettier": "5.5.6",
     "eslint-plugin-wdio": "9.31.3",
+    "globals": "17.13.0",
     "husky": "9.1.7",
-    "prettier": "3.9.6"
+    "jiti": "2.7.0",
+    "prettier": "3.9.6",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.72.1"
   }
 }

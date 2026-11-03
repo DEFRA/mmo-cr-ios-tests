@@ -1,7 +1,8 @@
 import fs from 'node:fs'
+import { browser } from '@wdio/globals'
 
 const oneMinute = 60 * 1000
-const failures = []
+const failures: string[] = []
 
 // Variables already set in the shell take precedence over the file
 const envFile = process.env.ENV_FILE || '.env'
@@ -9,7 +10,8 @@ if (fs.existsSync(envFile)) {
   process.loadEnvFile(envFile)
 }
 
-if (!process.env.BROWSERSTACK_USERNAME || !process.env.BROWSERSTACK_KEY) {
+const { BROWSERSTACK_USERNAME, BROWSERSTACK_KEY } = process.env
+if (!BROWSERSTACK_USERNAME || !BROWSERSTACK_KEY) {
   throw new Error(
     `Set BROWSERSTACK_USERNAME and BROWSERSTACK_KEY in your shell or in ${envFile}`
   )
@@ -19,13 +21,13 @@ if (!process.env.BROWSERSTACK_USERNAME || !process.env.BROWSERSTACK_KEY) {
 const proxyUrl = process.env.HTTPS_PROXY || process.env.HTTP_PROXY
 const proxy = proxyUrl ? new URL(proxyUrl) : null
 
-export const config = {
+export const config: WebdriverIO.Config = {
   runner: 'local',
 
-  user: process.env.BROWSERSTACK_USERNAME,
-  key: process.env.BROWSERSTACK_KEY,
+  user: BROWSERSTACK_USERNAME,
+  key: BROWSERSTACK_KEY,
 
-  specs: ['./test/app/specs/**/*.js'],
+  specs: ['./test/app/specs/**/*.ts'],
   maxInstances: 1,
 
   capabilities: [
@@ -49,14 +51,16 @@ export const config = {
     [
       'browserstack',
       {
-        app: process.env.BROWSERSTACK_APP_ID,
+        ...(process.env.BROWSERSTACK_APP_ID && {
+          app: process.env.BROWSERSTACK_APP_ID
+        }),
         // Tunnel device traffic through this machine (and its VPN)
         browserstackLocal: true,
         opts: {
           forceLocal: true,
           ...(proxy && {
             proxyHost: proxy.hostname,
-            proxyPort: Number(proxy.port)
+            proxyPort: proxy.port
           })
         },
         testObservability: false
@@ -97,9 +101,11 @@ export const config = {
     timeout: 3 * oneMinute
   },
 
-  afterTest: async function (test, context, { error }) {
+  afterTest: async function (test, _context, { error }: { error?: unknown }) {
     if (error) {
-      failures.push(`${test.title}: ${error.message}`)
+      const message =
+        error instanceof Error ? error.message : JSON.stringify(error)
+      failures.push(`${test.title}: ${message}`)
       await browser.takeScreenshot()
     }
   },
@@ -116,9 +122,14 @@ export const config = {
     )
   },
 
-  onComplete: function (exitCode, config, capabilities, results) {
+  onComplete: function (
+    _exitCode,
+    _config,
+    _capabilities,
+    results: { failed: number }
+  ) {
     // !Do Not Remove! Required for test status to show correctly in portal.
-    if (results?.failed && results.failed > 0) {
+    if (results.failed > 0) {
       fs.writeFileSync('FAILED', JSON.stringify(results))
     }
   }

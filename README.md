@@ -36,7 +36,7 @@ npm install
 
 ### Running the tests
 
-The app tests (`test/app/specs`) run on a BrowserStack real device using `wdio.browserstack.conf.js`:
+The app tests (`test/app/specs/**/*.ts`) run on a BrowserStack real device using `wdio.browserstack.conf.ts`:
 
 ```bash
 npm run test:browserstack

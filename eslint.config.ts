@@ -1,5 +1,7 @@
+import type { Linter } from 'eslint'
 import { defineConfig } from 'eslint/config'
 import js from '@eslint/js'
+import tseslint from 'typescript-eslint'
 import globals from 'globals'
 import eslintPluginPrettier from 'eslint-plugin-prettier'
 import eslintConfigPrettier from 'eslint-config-prettier/flat'
@@ -12,16 +14,23 @@ export default defineConfig([
 
   js.configs.recommended,
 
-  wdioConfig['flat/recommended'],
+  tseslint.configs.strictTypeChecked,
+
+  // Plugin types its rule severities as plain strings
+  wdioConfig['flat/recommended'] as Linter.Config,
 
   {
-    files: ['**/*.js'],
+    files: ['**/*.ts'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
         ...globals.node,
         ...globals.mocha
+      },
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname
       }
     },
     plugins: {
@@ -30,7 +39,10 @@ export default defineConfig([
     rules: {
       'prettier/prettier': 'error',
       'no-console': 'error',
-      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }]
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' }
+      ]
     }
   },
 
