@@ -2,7 +2,7 @@ import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
 import { logStep } from '../common/logger.ts';
 
 export class SubmissionConfirmationPage extends BaseCatchRecordPage {
-    protected pageId = 'submissionConfirmation';
+    protected override pageId = 'submissionConfirmation';
 
     get notice() {
         return $('~CatchRecord.submissionConfirmation.notice');

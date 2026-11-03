@@ -89,24 +89,24 @@ export class HomePage extends BasePage {
     }
 
     tableRowDate(rowIndex: number) {
-        return $(`~Home.table.row.${rowIndex}.date`);
+        return $(`~Home.table.row.${String(rowIndex)}.date`);
     }
 
     tableRowVessel(rowIndex: number, vessel: string) {
         return $(
-            `(//XCUIElementTypeStaticText[@name="${vessel}" and @value="${vessel}"])[${rowIndex + 1}]`,
+            `(//XCUIElementTypeStaticText[@name="${vessel}" and @value="${vessel}"])[${String(rowIndex + 1)}]`,
         );
     }
 
     tableRowStatus(rowIndex: number, status: string) {
         return $(
-            `(//XCUIElementTypeStaticText[@name="${status}" and @value="${status}"])[${rowIndex + 1}]`,
+            `(//XCUIElementTypeStaticText[@name="${status}" and @value="${status}"])[${String(rowIndex + 1)}]`,
         );
     }
 
     tableRowCreatedBy(rowIndex: number, createdBy: string) {
         return $(
-            `(//XCUIElementTypeStaticText[@name="${createdBy}" and @value="${createdBy}"])[${rowIndex + 1}]`,
+            `(//XCUIElementTypeStaticText[@name="${createdBy}" and @value="${createdBy}"])[${String(rowIndex + 1)}]`,
         );
     }
 

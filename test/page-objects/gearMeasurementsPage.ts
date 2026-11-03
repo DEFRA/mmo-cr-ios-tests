@@ -2,7 +2,7 @@ import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
 import { logStep } from '../common/logger.ts';
 
 export class GearMeasurementsPage extends BaseCatchRecordPage {
-    protected pageId = 'gearMeasurements';
+    protected override pageId = 'gearMeasurements';
 
     get wholeNumbersText() {
         return $('~All gear measurements must be whole numbers.');

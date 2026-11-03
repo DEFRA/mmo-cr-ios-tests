@@ -52,12 +52,12 @@ export const config: WebdriverIO.Config = {
 
     maxInstances: browserStackMaxInstances,
 
-    onPrepare: async () => {
+    onPrepare: () => {
         cleanReports();
-        await logInfo('BrowserStack iOS session starting...');
+        logInfo('BrowserStack iOS session starting...');
     },
 
-    specs: ['../test/ios/specs/**/*.spec.ts'],
+    specs: ['../test/specs/**/*.spec.ts'],
 
     connectionRetryTimeout: 90000,
 };

@@ -7,7 +7,7 @@ import SelectVesselPage from '../page-objects/selectVesselPage.ts';
 import { logStep } from '../common/logger.ts';
 import iosFlowNavigator, { type CatchRecordJourneyData } from '../helpers/iosFlowNavigator.ts';
 
-const journeyData: CatchRecordJourneyData = {
+const journeyData = {
     vessel: 'ACHILLES',
     port: 'Peel',
     gear: 'Gillnets (drift)',
@@ -17,7 +17,7 @@ const journeyData: CatchRecordJourneyData = {
     species: 'European lobster (LBE)',
     weight: '500',
     landingStorage: 'no',
-};
+} satisfies CatchRecordJourneyData;
 
 describe('iOS check your answers page', () => {
     beforeEach(async () => {

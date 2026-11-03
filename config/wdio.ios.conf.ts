@@ -38,7 +38,7 @@ export const config: WebdriverIO.Config = {
         },
     ],
 
-    specs: ['../test/ios/specs/**/*.spec.ts'],
+    specs: ['../test/specs/**/*.spec.ts'],
 
     runner: 'local',
     bail: 0,
@@ -46,7 +46,7 @@ export const config: WebdriverIO.Config = {
 
     onPrepare: async () => {
         cleanReports();
-        await logInfo(`iOS onPrepare: Using app ${appFile}, UDID: ${iosUdid ?? 'auto'}`);
+        logInfo(`iOS onPrepare: Using app ${appFile}, UDID: ${iosUdid ?? 'auto'}`);
         if (iosBundleId) {
             await uninstallIosApp(iosBundleId, iosUdid);
         }

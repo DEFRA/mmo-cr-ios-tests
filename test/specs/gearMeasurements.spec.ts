@@ -97,7 +97,7 @@ describe('iOS gear measurements page', () => {
         await GearMeasurementsPage.continueToNextStep();
 
         await expect(GearMeasurementsPage.heading).toBeDisplayed();
-        await expect(await GearMeasurementsPage.meshSizeField.getAttribute('value')).toBeNull();
+        expect(await GearMeasurementsPage.meshSizeField.getAttribute('value')).toBeNull();
     });
 
     it('does not advance with a decimal mesh size', async () => {

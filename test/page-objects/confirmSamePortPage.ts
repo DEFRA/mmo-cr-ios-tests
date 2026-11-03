@@ -1,7 +1,7 @@
 import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
 
 export class ConfirmSamePortPage extends BaseCatchRecordPage {
-    protected pageId = 'confirmSamePort';
+    protected override pageId = 'confirmSamePort';
 
     headingForPort(portName: string) {
         return $(

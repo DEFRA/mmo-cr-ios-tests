@@ -128,7 +128,7 @@ describe('iOS record species weights page', () => {
         logStep('navigates to remove species page when remove species is clicked (AC5)');
         await RecordSpeciesWeightsPage.removeSpecies();
 
-        const removeHeading = await $('//XCUIElementTypeStaticText[contains(@name, "Remove")]');
+        const removeHeading = $('//XCUIElementTypeStaticText[contains(@name, "Remove")]');
         await removeHeading.waitForDisplayed({ timeout: 10000 });
         await expect(removeHeading).toBeDisplayed();
     });
@@ -141,7 +141,7 @@ describe('iOS record species weights page', () => {
         const option = RecordSpeciesWeightsPage.speciesOption(journeyData.species);
         await option.click();
         await RecordSpeciesWeightsPage.continueToNextStep();
-        const blankError = await $(
+        const blankError = $(
             '//XCUIElementTypeStaticText[contains(@name, "Enter the Weight") or contains(@name, "Weight above minimum")]',
         );
         await expect(blankError).toBeDisplayed();
@@ -150,7 +150,7 @@ describe('iOS record species weights page', () => {
         await RecordSpeciesWeightsPage.enterWeight(journeyData.species, '5');
         await RecordSpeciesWeightsPage.enterWeightDiscarded(journeyData.species, '10');
         await RecordSpeciesWeightsPage.continueToNextStep();
-        const higherDiscardedError = await $(
+        const higherDiscardedError = $(
             '//XCUIElementTypeStaticText[contains(@name, "must be higher")]',
         );
         await expect(higherDiscardedError).toBeDisplayed();
@@ -161,7 +161,7 @@ describe('iOS record species weights page', () => {
         logStep('AC8: entering weight incorrectly (two decimal places)');
         await RecordSpeciesWeightsPage.enterWeight(journeyData.species, '10.55');
         await RecordSpeciesWeightsPage.continueToNextStep();
-        const decimalError = await $(
+        const decimalError = $(
             '//XCUIElementTypeStaticText[contains(@name, "decimal") or contains(@name, "whole number")]',
         );
         await expect(decimalError).toBeDisplayed();
@@ -169,7 +169,7 @@ describe('iOS record species weights page', () => {
         logStep('Scenario 9: catch weight limit 0');
         await RecordSpeciesWeightsPage.enterWeight(journeyData.species, '0');
         await RecordSpeciesWeightsPage.continueToNextStep();
-        const zeroError = await $(
+        const zeroError = $(
             '//XCUIElementTypeStaticText[contains(@name, "more than 0kg") or contains(@name, "more the 0KG")]',
         );
         await expect(zeroError).toBeDisplayed();
@@ -177,7 +177,7 @@ describe('iOS record species weights page', () => {
         logStep('Scenario 10: catch weight limit 10,000');
         await RecordSpeciesWeightsPage.enterWeight(journeyData.species, '10001');
         await RecordSpeciesWeightsPage.continueToNextStep();
-        const limitError = await $('//XCUIElementTypeStaticText[contains(@name, "10,000")]');
+        const limitError = $('//XCUIElementTypeStaticText[contains(@name, "10,000")]');
         await expect(limitError).toBeDisplayed();
 
         logStep('Scenario 11: entering weight with minus or letters');
@@ -187,9 +187,7 @@ describe('iOS record species weights page', () => {
 
         await RecordSpeciesWeightsPage.enterWeight(journeyData.species, 'abc');
         await RecordSpeciesWeightsPage.continueToNextStep();
-        const letterError = await $(
-            '//XCUIElementTypeStaticText[contains(@name, "must be a number")]',
-        );
+        const letterError = $('//XCUIElementTypeStaticText[contains(@name, "must be a number")]');
         await expect(letterError).toBeDisplayed();
     });
 });

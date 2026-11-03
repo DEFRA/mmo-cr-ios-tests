@@ -2,7 +2,7 @@ import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
 import { logStep } from '../common/logger.ts';
 
 export class CatchLocationManualEntryPage extends BaseCatchRecordPage {
-    protected pageId = 'catchLocationManualEntry';
+    protected override pageId = 'catchLocationManualEntry';
 
     get description() {
         return $('~Enter the statistical sub area where most of your catch was caught using Pots');

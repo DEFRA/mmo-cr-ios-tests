@@ -2,7 +2,7 @@ import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
 import { logStep } from '../common/logger.ts';
 
 export class SelectGearPage extends BaseCatchRecordPage {
-    protected pageId = 'selectGear';
+    protected override pageId = 'selectGear';
 
     get description() {
         return $('~Select all the gears used on your vessel.');

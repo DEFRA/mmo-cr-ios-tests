@@ -2,7 +2,7 @@ import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
 import { logStep } from '../common/logger.ts';
 
 export class LandingStoragePage extends BaseCatchRecordPage {
-    protected pageId = 'landingStorage';
+    protected override pageId = 'landingStorage';
 
     get description() {
         return $(

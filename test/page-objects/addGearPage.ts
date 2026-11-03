@@ -2,7 +2,7 @@ import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
 import { logStep } from '../common/logger.ts';
 
 export class AddGearPage extends BaseCatchRecordPage {
-    protected pageId = 'addGear';
+    protected override pageId = 'addGear';
 
     get emptyStateText() {
         return $('~No gear added yet. Add gear used by this vessel.');

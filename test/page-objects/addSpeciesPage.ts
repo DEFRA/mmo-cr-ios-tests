@@ -2,7 +2,7 @@ import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
 import { logStep } from '../common/logger.ts';
 
 export class AddSpeciesPage extends BaseCatchRecordPage {
-    protected pageId = 'addSpecies';
+    protected override pageId = 'addSpecies';
 
     get emptyStateText() {
         return $("~You haven't added any species yet.");

@@ -2,7 +2,7 @@ import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
 import { logStep } from '../common/logger.ts';
 
 export class SelectPortReturnPage extends BaseCatchRecordPage {
-    protected pageId = 'selectPort.return';
+    protected override pageId = 'selectPort.return';
 
     get description() {
         return $('~Select the port name, or the nearest port to where you returned.');

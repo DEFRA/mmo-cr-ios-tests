@@ -3,19 +3,20 @@ import { logStep } from '../common/logger.ts';
 
 export abstract class TripDatePage extends BaseCatchRecordPage {
     get datePicker() {
+        if (!this.pageId) throw new Error('pageId not defined');
         return $(`~CatchRecord.${this.pageId}.picker`);
     }
 
     get monthPicker() {
-        return this.datePicker.$$('XCUIElementTypePickerWheel')[0];
+        return this.datePicker.$('-ios class chain:**/XCUIElementTypePickerWheel[1]');
     }
 
     get dayPicker() {
-        return this.datePicker.$$('XCUIElementTypePickerWheel')[1];
+        return this.datePicker.$('-ios class chain:**/XCUIElementTypePickerWheel[2]');
     }
 
     get yearPicker() {
-        return this.datePicker.$$('XCUIElementTypePickerWheel')[2];
+        return this.datePicker.$('-ios class chain:**/XCUIElementTypePickerWheel[3]');
     }
 
     get validationError() {

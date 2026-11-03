@@ -2,7 +2,7 @@ import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
 import { logStep } from '../common/logger.ts';
 
 export class SelectVesselPage extends BaseCatchRecordPage {
-    protected pageId = 'selectVessel';
+    protected override pageId = 'selectVessel';
 
     get selectVesselHeading() {
         return $('~Select the vessel for this trip');

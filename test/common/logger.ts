@@ -1,4 +1,4 @@
-import { appendFile, mkdir } from 'node:fs/promises';
+import { appendFileSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const logDir = resolve(process.cwd(), 'logs');
@@ -6,16 +6,26 @@ const logFile = resolve(logDir, 'test.log');
 
 type Level = 'STEP' | 'INFO' | 'WARN' | 'ERROR';
 
-async function log(level: Level, message: string): Promise<void> {
+function log(level: Level, message: string): void {
     const line = `[${new Date().toISOString()}] [${level}] ${message}\n`;
     const stream = level === 'WARN' || level === 'ERROR' ? process.stderr : process.stdout;
     stream.write(line);
-    await mkdir(logDir, { recursive: true });
-    await appendFile(logFile, line);
+    mkdirSync(logDir, { recursive: true });
+    appendFileSync(logFile, line);
 }
 
-export const logStep = (message: string): Promise<void> => log('STEP', message);
-export const logInfo = (message: string): Promise<void> => log('INFO', message);
-export const logWarn = (message: string): Promise<void> => log('WARN', message);
-export const logError = (message: string, error?: unknown): Promise<void> =>
+export function logStep(message: string): void {
+    log('STEP', message);
+}
+
+export function logInfo(message: string): void {
+    log('INFO', message);
+}
+
+export function logWarn(message: string): void {
+    log('WARN', message);
+}
+
+export function logError(message: string, error?: unknown): void {
     log('ERROR', error instanceof Error ? `${message}: ${error.message}` : message);
+}

@@ -2,7 +2,7 @@ import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
 import { logStep, logWarn } from '../common/logger.ts';
 
 export class CatchLocationPage extends BaseCatchRecordPage {
-    protected pageId = 'catchLocation';
+    protected override pageId = 'catchLocation';
 
     get nearestAreasDescription() {
         return $('~The statistical areas nearest to your departure port are shown below.');
@@ -44,7 +44,7 @@ export class CatchLocationPage extends BaseCatchRecordPage {
 
     async visibleAreaCount() {
         await this.map.waitForDisplayed({ timeout: 10000 });
-        const pins = await this.mapPins;
+        const pins = await this.mapPins.getElements();
         return pins.length;
     }
 

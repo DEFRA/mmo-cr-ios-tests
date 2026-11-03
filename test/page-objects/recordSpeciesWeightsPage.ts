@@ -2,7 +2,7 @@ import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
 import { logStep } from '../common/logger.ts';
 
 export class RecordSpeciesWeightsPage extends BaseCatchRecordPage {
-    protected pageId = 'recordSpeciesWeights';
+    protected override pageId = 'recordSpeciesWeights';
 
     get description() {
         return $(
@@ -15,7 +15,7 @@ export class RecordSpeciesWeightsPage extends BaseCatchRecordPage {
     }
 
     errorSummaryItem(index: number) {
-        return $(`~CatchRecord.recordSpeciesWeights.errorSummary.item.${index}`);
+        return $(`~CatchRecord.recordSpeciesWeights.errorSummary.item.${String(index)}`);
     }
 
     weightAboveField(speciesName: string) {

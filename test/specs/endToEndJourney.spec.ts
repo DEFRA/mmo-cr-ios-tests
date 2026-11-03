@@ -23,7 +23,7 @@ const endToEndJourneyData = {
     vessel: 'ACHILLES' as const,
     tripToday: 'yes' as const,
     port: 'Peel',
-    confirmSamePort: 'yes' as const,
+    confirmSamePort: 'yes' as 'yes' | 'no',
     gear: 'Gillnets (drift)',
     meshSize: '12',
     gearVariables: { netLengthHauled: '2', netLengthLeft: '1' },

@@ -2,7 +2,7 @@ import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
 import { logStep } from '../common/logger.ts';
 
 export class NewCatchRecordPage extends BaseCatchRecordPage {
-    protected pageId = 'draftAction';
+    protected override pageId = 'draftAction';
 
     get questionText() {
         return $('~What do you want to do with your draft record?');

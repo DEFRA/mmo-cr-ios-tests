@@ -2,7 +2,7 @@ import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
 import { logStep } from '../common/logger.ts';
 
 export class TripTodayPage extends BaseCatchRecordPage {
-    protected pageId = 'tripToday';
+    protected override pageId = 'tripToday';
 
     get questionHeading() {
         return $('~Did your trip start and finish today?');

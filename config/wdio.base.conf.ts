@@ -44,22 +44,20 @@ const execFileAsync = promisify(execFile);
 
 export async function uninstallIosApp(bundleId: string, udid?: string): Promise<void> {
     if (!udid) {
-        await logWarn('[onPrepare] IOS_UDID not set, skipping iOS app uninstall check');
+        logWarn('[onPrepare] IOS_UDID not set, skipping iOS app uninstall check');
         return;
     }
     try {
         await execFileAsync('xcrun', ['simctl', 'get_app_container', udid, bundleId]);
     } catch {
-        await logInfo(`[onPrepare] iOS app ${bundleId} is not installed, nothing to uninstall`);
+        logInfo(`[onPrepare] iOS app ${bundleId} is not installed, nothing to uninstall`);
         return;
     }
-    await logInfo(`[onPrepare] Uninstalling existing iOS app ${bundleId}`);
+    logInfo(`[onPrepare] Uninstalling existing iOS app ${bundleId}`);
     try {
         await execFileAsync('xcrun', ['simctl', 'uninstall', udid, bundleId]);
     } catch (err) {
-        await logWarn(
-            `[onPrepare] Skipped iOS uninstall for ${bundleId}: ${(err as Error).message}`,
-        );
+        logWarn(`[onPrepare] Skipped iOS uninstall for ${bundleId}: ${(err as Error).message}`);
     }
 }
 
@@ -75,16 +73,16 @@ export const baseConfig: Partial<WebdriverIO.Config> = {
         timeout: 120000,
     },
 
-    beforeTest: async (test) => {
-        await logInfo(`Starting test: ${test.title}`);
+    beforeTest: (test) => {
+        logInfo(`Starting test: ${test.title}`);
     },
 
     afterTest: async (test, _context, { error }: { error?: unknown }) => {
         if (error) {
-            await logWarn(`Test FAILED: ${test.title}`);
+            logWarn(`Test FAILED: ${test.title}`);
             await browser.takeScreenshot();
         } else {
-            await logInfo(`Test PASSED: ${test.title}`);
+            logInfo(`Test PASSED: ${test.title}`);
         }
     },
 

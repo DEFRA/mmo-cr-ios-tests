@@ -2,7 +2,7 @@ import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
 import { logStep } from '../common/logger.ts';
 
 export class AddPortPage extends BaseCatchRecordPage {
-    protected pageId = 'addPort';
+    protected override pageId = 'addPort';
 
     get emptyStateText() {
         return $(

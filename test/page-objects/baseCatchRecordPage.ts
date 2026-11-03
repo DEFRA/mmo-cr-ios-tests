@@ -21,10 +21,7 @@ export class BaseCatchRecordPage extends BasePage {
 
     async continueToNextStep() {
         logStep('continueToNextStep');
-        const btn = this.saveContinueButton;
-        if (btn) {
-            await this.scrollAndClickIfExisting(btn);
-        }
+        await this.scrollAndClickIfExisting(this.saveContinueButton);
     }
 
     get backButton() {

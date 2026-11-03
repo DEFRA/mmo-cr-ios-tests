@@ -2,7 +2,7 @@ import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
 import { logStep } from '../common/logger.ts';
 
 export class CheckYourAnswersPage extends BaseCatchRecordPage {
-    protected pageId = 'checkYourAnswers';
+    protected override pageId = 'checkYourAnswers';
 
     get tripSection() {
         return $('~CatchRecord.checkYourAnswers.section.trip');

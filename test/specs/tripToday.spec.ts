@@ -14,7 +14,7 @@ describe(`iOS trip today page for vessel ${vessels[0]}`, () => {
         logStep('beforeEach');
         await iosFlowNavigator.signIn();
         await iosFlowNavigator.openCreateRecord();
-        await SelectVesselPage.selectVessel(vessels[0] as 'ACHILLES' | 'HERCULES');
+        await SelectVesselPage.selectVessel(vessels[0]);
         await expect(TripTodayPage.questionHeading).toBeDisplayed();
     });
 

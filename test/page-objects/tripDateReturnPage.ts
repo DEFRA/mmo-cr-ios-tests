@@ -2,7 +2,7 @@ import { TripDatePage } from './tripDatePage.ts';
 import { logStep } from '../common/logger.ts';
 
 export class TripDateReturnPage extends TripDatePage {
-    protected pageId = 'tripDate.return';
+    protected override pageId = 'tripDate.return';
 
     get dateContainer() {
         return $('~When did you return from your trip?');
