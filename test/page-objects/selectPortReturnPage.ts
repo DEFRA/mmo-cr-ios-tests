@@ -1,0 +1,39 @@
+import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
+import { logStep } from '../common/logger.ts';
+
+export class SelectPortReturnPage extends BaseCatchRecordPage {
+    protected pageId = 'selectPort.return';
+
+    get description() {
+        return $('~Select the port name, or the nearest port to where you returned.');
+    }
+
+    get radioGroup() {
+        return $('~CatchRecord.selectPort.return.radioGroup');
+    }
+
+    portOption(portName: string) {
+        return this.selector(`CatchRecord.selectPort.return.option.${portName.toLowerCase()}`);
+    }
+    get addAnotherPortButton() {
+        return $('~CatchRecord.selectPort.return.addAnother');
+    }
+
+    get validationError() {
+        return $('~CatchRecord.selectPort.return.error');
+    }
+
+    async selectPort(portName: string) {
+        logStep('port selection');
+        await this.clickFirstExisting(
+            this.optionCandidates('CatchRecord.selectPort.return.option', portName),
+            `Could not find return port option: ${portName}`,
+        );
+    }
+
+    async addAnotherPort() {
+        await this.addAnotherPortButton.click();
+    }
+}
+
+export default new SelectPortReturnPage();
