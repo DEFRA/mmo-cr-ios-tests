@@ -51,8 +51,53 @@ export class CheckYourAnswersPage extends BaseCatchRecordPage {
     }
 
     weightAboveValue(value: string) {
-        return this.selector(value);
+        return this.selector(`${value} kg`);
     }
+
+    weightBelowValue(value: string) {
+        return this.selector(`${value} kg`);
+    }
+
+    weightDiscardedValue(value: string) {
+        return this.selector(`${value} kg`);
+    }
+
+    get weightAboveLabel() {
+        return $('~Weight above minimum size retained');
+    }
+
+    get weightBelowLabel() {
+        return $('~Weight below minimum size retained');
+    }
+
+    get weightDiscardedLabel() {
+        return $('~Weight legally discarded');
+    }
+
+    get declarationNotice() {
+        return $('~CatchRecord.checkYourAnswers.declaration.notice');
+    }
+
+    get declarationStatement() {
+        return $("~By submitting your catch record, you're confirming");
+    }
+
+    get landedWeightAccuracyText() {
+        return $('~The weight of fish you have landed is accurate');
+    }
+
+    get permittedToleranceText() {
+        return $('~This is within permitted tolerance levels');
+    }
+
+    get inaccurateRecordingActionText() {
+        return $('~Fishing authorities may take action in respect of inaccurate catch recording');
+    }
+
+    get acceptAndSubmitButton() {
+        return $('~CatchRecord.checkYourAnswers.accept');
+    }
+
     get changeTripVesselButton() {
         return $('~CatchRecord.checkYourAnswers.change.trip.vessel');
     }

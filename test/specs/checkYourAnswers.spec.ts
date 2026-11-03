@@ -83,13 +83,24 @@ describe('iOS check your answers page', () => {
         );
     });
 
-    it.only('shows the captured species answers', async () => {
+    it('shows the captured species answers and submission declaration', async () => {
         await CheckYourAnswersPage.scrollToElement(
             CheckYourAnswersPage.speciesNameValue(journeyData.species),
         );
+        await CheckYourAnswersPage.scrollToElement(CheckYourAnswersPage.weightAboveLabel);
+        await CheckYourAnswersPage.scrollToElement(CheckYourAnswersPage.weightBelowLabel);
+        await CheckYourAnswersPage.scrollToElement(CheckYourAnswersPage.weightDiscardedLabel);
         await CheckYourAnswersPage.scrollToElement(
             CheckYourAnswersPage.weightAboveValue(journeyData.weight),
         );
+        await CheckYourAnswersPage.scrollToElement(CheckYourAnswersPage.declarationNotice);
+        await CheckYourAnswersPage.scrollToElement(CheckYourAnswersPage.declarationStatement);
+        await CheckYourAnswersPage.scrollToElement(CheckYourAnswersPage.landedWeightAccuracyText);
+        await CheckYourAnswersPage.scrollToElement(CheckYourAnswersPage.permittedToleranceText);
+        await CheckYourAnswersPage.scrollToElement(
+            CheckYourAnswersPage.inaccurateRecordingActionText,
+        );
+        await CheckYourAnswersPage.scrollToElement(CheckYourAnswersPage.acceptAndSubmitButton);
     });
 
     it('opens the select vessel page when changing the vessel', async () => {
