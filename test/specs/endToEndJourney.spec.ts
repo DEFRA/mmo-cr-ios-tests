@@ -78,10 +78,7 @@ describe('iOS end-to-end catch record journey', () => {
         await AddPortPage.continueToNextStep();
 
         await expect(ConfirmSamePortPage.headingForPort(endToEndJourneyData.port)).toBeDisplayed();
-        await (endToEndJourneyData.confirmSamePort === 'yes'
-            ? ConfirmSamePortPage.yesOption.click()
-            : ConfirmSamePortPage.noOption.click());
-        await ConfirmSamePortPage.continueToNextStep();
+        await ConfirmSamePortPage.selectSamePort(endToEndJourneyData.confirmSamePort);
 
         await expect(AddGearPage.heading).toBeDisplayed();
         await AddGearPage.selectGear(endToEndJourneyData.gear);
@@ -186,10 +183,7 @@ describe('iOS end-to-end catch record journey', () => {
         await expect(
             ConfirmSamePortPage.headingForPort(notSameDayJourneyData.port),
         ).toBeDisplayed();
-        await (notSameDayJourneyData.confirmSamePort === 'yes'
-            ? ConfirmSamePortPage.yesOption.click()
-            : ConfirmSamePortPage.noOption.click());
-        await ConfirmSamePortPage.continueToNextStep();
+        await ConfirmSamePortPage.selectSamePort(notSameDayJourneyData.confirmSamePort);
 
         await expect(AddGearPage.heading).toBeDisplayed();
         await AddGearPage.selectGear(notSameDayJourneyData.gear);

@@ -59,13 +59,7 @@ export class IosFlowNavigator {
     async confirmSamePort(portName: string, option: 'yes' | 'no') {
         logStep(`confirmSamePort option=${option}`);
         await expect(ConfirmSamePortPage.headingForPort(portName)).toBeDisplayed();
-        if (option === 'yes') {
-            await ConfirmSamePortPage.yesOption.click();
-            await ConfirmSamePortPage.continueToNextStep();
-        } else {
-            await ConfirmSamePortPage.noOption.click();
-            await ConfirmSamePortPage.continueToNextStep();
-        }
+        await ConfirmSamePortPage.selectSamePort(option);
     }
 
     async selectDeparturePort(portName: string) {

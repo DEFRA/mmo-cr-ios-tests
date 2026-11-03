@@ -127,8 +127,7 @@ describe('iOS add port page', () => {
         await AddPortPage.continueToNextStep();
 
         await expect(ConfirmSamePortPage.headingForPort('Peel')).toBeDisplayed();
-        await ConfirmSamePortPage.yesOption.click();
-        await ConfirmSamePortPage.continueToNextStep();
+        await ConfirmSamePortPage.selectSamePort('yes');
 
         await expect(AddGearPage.heading).toBeDisplayed();
     });
@@ -139,8 +138,7 @@ describe('iOS add port page', () => {
         await AddPortPage.continueToNextStep();
 
         await expect(ConfirmSamePortPage.headingForPort('Peel')).toBeDisplayed();
-        await ConfirmSamePortPage.noOption.click();
-        await ConfirmSamePortPage.continueToNextStep();
+        await ConfirmSamePortPage.selectSamePort('no');
 
         await expect(SelectPortDeparturePage.heading).toBeDisplayed();
         await SelectPortDeparturePage.portOption('Peel').click();

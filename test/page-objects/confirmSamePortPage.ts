@@ -1,17 +1,14 @@
 import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
+import AddGearPage from './addGearPage.ts';
+import SelectPortDeparturePage from './selectPortDeparturePage.ts';
+import { logStep } from '../common/logger.ts';
 
 export class ConfirmSamePortPage extends BaseCatchRecordPage {
     protected override pageId = 'confirmSamePort';
 
     headingForPort(portName: string) {
         return $(
-            `//XCUIElementTypeStaticText[@name="CatchRecord.confirmSamePort.heading" and @value="Was ${portName} your departure and return port?"]`,
-        );
-    }
-
-    get description() {
-        return $(
-            '~Select yes if you left from and returned to the same port. Select no if you used a different port for departure and return.',
+            `//XCUIElementTypeStaticText[@name="CatchRecord.confirmSamePort.heading" and @value="Was ${portName} the port or the closest port you set off from and returned to?"]`,
         );
     }
 
@@ -27,12 +24,14 @@ export class ConfirmSamePortPage extends BaseCatchRecordPage {
         return $('~CatchRecord.confirmSamePort.option.no');
     }
 
-    get validationError() {
-        return $('~CatchRecord.confirmSamePort.error');
-    }
+    async selectSamePort(option: 'yes' | 'no') {
+        logStep(`selectSamePort option=${option}`);
+        const selectedOption = option === 'yes' ? this.yesOption : this.noOption;
+        await selectedOption.click();
 
-    get addAnotherPortButton() {
-        return $('~CatchRecord.confirmSamePort.addAnother');
+        const nextPageHeading =
+            option === 'yes' ? AddGearPage.heading : SelectPortDeparturePage.heading;
+        await nextPageHeading.waitForDisplayed();
     }
 }
 
