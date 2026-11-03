@@ -10,6 +10,8 @@ const {
     BROWSERSTACK_USERNAME,
     BROWSERSTACK_ACCESS_KEY,
     BROWSERSTACK_IOS_APP_URL: appUrl,
+    BROWSERSTACK_DEVICE_NAME: deviceName = 'iPhone 17',
+    BROWSERSTACK_OS_VERSION: osVersion = '26',
 } = process.env;
 if (!BROWSERSTACK_USERNAME || !BROWSERSTACK_ACCESS_KEY || !appUrl) {
     throw new Error(
@@ -43,8 +45,8 @@ export const config: WebdriverIO.Config = {
             platformName: 'iOS',
             'appium:automationName': 'XCUITest',
             'bstack:options': {
-                deviceName: 'iPhone 17',
-                osVersion: '26',
+                deviceName,
+                osVersion,
                 realMobile: true,
             },
         },

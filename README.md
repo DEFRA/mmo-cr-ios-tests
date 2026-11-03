@@ -56,7 +56,7 @@ npm run test:ios:browserstack
 npm run test:ios:browserstack:spec ./test/specs/<file>.ts
 ```
 
-Requires `BROWSERSTACK_USERNAME`, `BROWSERSTACK_ACCESS_KEY` and `BROWSERSTACK_IOS_APP_URL` (the `bs://...` URL of an app already uploaded to BrowserStack). Optional: `BROWSERSTACK_MAX_INSTANCES` (default 2, must not exceed the plan's parallel sessions).
+Requires `BROWSERSTACK_USERNAME`, `BROWSERSTACK_ACCESS_KEY` and `BROWSERSTACK_IOS_APP_URL` (the `bs://...` URL of an app already uploaded to BrowserStack). Optional: `BROWSERSTACK_DEVICE_NAME` (default `iPhone 17`), `BROWSERSTACK_OS_VERSION` (default `26`), `BROWSERSTACK_MAX_INSTANCES` (default 2, must not exceed the plan's parallel sessions).
 
 ## Production
 
