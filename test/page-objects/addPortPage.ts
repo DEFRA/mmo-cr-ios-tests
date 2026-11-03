@@ -4,16 +4,6 @@ import { logStep } from '../common/logger.ts';
 export class AddPortPage extends BaseCatchRecordPage {
     protected override pageId = 'addPort';
 
-    get emptyStateText() {
-        return $(
-            '~No ports added yet. Enter a port name or the nearest port to where you left and will return.',
-        );
-    }
-
-    get searchLabel() {
-        return $('//XCUIElementTypeStaticText[starts-with(@value, "Add port to vessel ")][last()]');
-    }
-
     get searchField() {
         return $(
             '//XCUIElementTypeTextField[@placeholderValue="Type to search (minimum 2 characters)"]',

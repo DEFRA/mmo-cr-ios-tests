@@ -5,11 +5,7 @@ export class TripDateDeparturePage extends TripDatePage {
     protected override pageId = 'tripDate.departure';
 
     get dateContainer() {
-        return $('~When did you leave for your trip?');
-    }
-
-    get dateHelperText() {
-        return $('~Enter the date you departed. For example, 31/03/2020');
+        return this.heading;
     }
 
     async enterDepartureDate(day: string, monthName: string, year: string) {

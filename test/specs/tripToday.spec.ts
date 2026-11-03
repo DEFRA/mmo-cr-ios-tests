@@ -34,11 +34,17 @@ describe(`iOS trip today page for vessel ${vessels[0]}`, () => {
         await TripTodayPage.selectTripToday('yes');
 
         await expect(AddPortPage.heading).toBeDisplayed();
+        await expect(AddPortPage.searchField).toBeDisplayed();
+        await expect(AddPortPage.saveContinueButton).toBeDisplayed();
     });
 
     it('goes to return date and then add port after entering valid dates', async () => {
         logStep('goes to return date and then add port after entering valid dates');
         await TripTodayPage.selectTripToday('no');
+        await expect(TripDateDeparturePage.dateContainer).toBeDisplayed();
+        await expect(TripDateDeparturePage.datePicker).toBeDisplayed();
+        await expect(TripDateDeparturePage.saveContinueButton).toBeDisplayed();
+
         const departureDate = datePartsFromToday(1);
         const returnDate = datePartsFromToday(0);
         await TripDateDeparturePage.enterDepartureDate(

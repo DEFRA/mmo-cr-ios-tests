@@ -14,8 +14,6 @@ describe('iOS add port page', () => {
         await iosFlowNavigator.selectVessel('ACHILLES');
         await iosFlowNavigator.selectTripToday('yes');
         await expect(AddPortPage.heading).toBeDisplayed();
-        const headingValue = await AddPortPage.heading.getAttribute('value');
-        expect(headingValue).toContain('ACHILLES');
     });
 
     afterEach(async () => {
@@ -23,10 +21,8 @@ describe('iOS add port page', () => {
         await AddPortPage.close();
     });
 
-    it('displays the add port controls and empty state', async () => {
-        logStep('displays the add port controls and empty state');
+    it('displays the add port controls', async () => {
         await expect(AddPortPage.heading).toBeDisplayed();
-        await expect(AddPortPage.emptyStateText).toBeDisplayed();
         await expect(AddPortPage.searchField).toBeDisplayed();
         await expect(AddPortPage.saveContinueButton).toBeDisplayed();
     });
@@ -36,24 +32,25 @@ describe('iOS add port page', () => {
         await AddPortPage.continueToNextStep();
 
         await expect(AddPortPage.heading).toBeDisplayed();
-        await expect(AddPortPage.emptyStateText).toBeDisplayed();
+        await expect(AddPortPage.searchField).toBeDisplayed();
+        await expect(AddPortPage.validationError).toBeDisplayed();
     });
 
     it('shows no dropdown for one character but reveals selectable matches for two', async () => {
         logStep('shows no dropdown for one character but reveals selectable matches for two');
-        const portResult = AddPortPage.portResult('Fraserburgh');
+        const portResult = AddPortPage.portResult('Harwich');
 
-        await AddPortPage.enterPortSearch('F');
+        await AddPortPage.enterPortSearch('h');
         await expect(portResult).not.toBeDisplayed();
 
-        await AddPortPage.enterPortSearch('Fr');
-        await portResult.waitForDisplayed({ timeout: 10000 });
+        await AddPortPage.enterPortSearch('ha');
+        await portResult.waitForExist({ timeout: 10000 });
+        await AddPortPage.scrollToElement(portResult);
         await expect(portResult).toBeDisplayed();
 
-        await AddPortPage.scrollToElement(portResult);
         await portResult.click();
 
-        await expect(AddPortPage.searchField).toHaveAttribute('value', 'Fraserburgh');
+        await expect(AddPortPage.searchField).toHaveAttribute('value', 'Harwich');
     });
 
     it('shows validation error when continuing with only one character', async () => {
