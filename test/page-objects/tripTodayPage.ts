@@ -1,21 +1,13 @@
 import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
 import { logStep } from '../common/logger.ts';
+import AddPortPage from './addPortPage.ts';
+import TripDateDeparturePage from './tripDateDeparturePage.ts';
 
 export class TripTodayPage extends BaseCatchRecordPage {
     protected override pageId = 'tripToday';
 
     get questionHeading() {
         return $('~Did your trip start and finish today?');
-    }
-
-    get yesOptionText() {
-        return $("~Select yes if you're recording today's trip now.");
-    }
-
-    get noOptionText() {
-        return $(
-            "~Select no if you're recording a trip from another day — you'll then enter the dates.",
-        );
     }
 
     get radioGroup() {
@@ -29,15 +21,14 @@ export class TripTodayPage extends BaseCatchRecordPage {
     get noOption() {
         return $('~CatchRecord.tripToday.option.no');
     }
-    get validationError() {
-        return $('~CatchRecord.tripToday.error');
-    }
-
     async selectTripToday(option: 'yes' | 'no') {
         logStep('selectTripToday with option: ' + option);
         const selectedOption = option === 'yes' ? this.yesOption : this.noOption;
 
         await selectedOption.click();
+        const nextPageHeading =
+            option === 'yes' ? AddPortPage.heading : TripDateDeparturePage.heading;
+        await nextPageHeading.waitForDisplayed();
     }
 }
 

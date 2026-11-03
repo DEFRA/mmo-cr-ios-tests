@@ -6,7 +6,7 @@ describe('iOS home page', () => {
     beforeEach(async () => {
         logStep('beforeEach');
         await iosFlowNavigator.signIn();
-        await HomePage.scrollToElement(HomePage.yourTripsHeading);
+        await HomePage.scrollToElement(HomePage.catchRecordsHeading);
     });
 
     afterEach(async () => {
@@ -16,18 +16,11 @@ describe('iOS home page', () => {
 
     it('displays the home page content', async () => {
         logStep('displays the home page content');
-        await HomePage.scrollToElement(HomePage.yourTripsHeading);
-        await expect(HomePage.yourTripsHeading).toBeDisplayed();
-        await HomePage.scrollToElement(HomePage.tripsDescription);
-        await expect(HomePage.tripsDescription).toBeDisplayed();
-        await HomePage.scrollToElement(HomePage.tripDateDescription);
-        await expect(HomePage.tripDateDescription).toBeDisplayed();
-        await HomePage.scrollToElement(HomePage.appUsageNote);
-        await expect(HomePage.appUsageNote).toBeDisplayed();
+        await HomePage.scrollToElement(HomePage.catchRecordsHeading);
+        await expect(HomePage.catchRecordsHeading).toBeDisplayed();
+        await expect(HomePage.webServiceNote).toBeDisplayed();
         await HomePage.scrollToElement(HomePage.warningBox);
         await expect(HomePage.warningBox).toBeDisplayed();
-        await expect(HomePage.bannerTitle).toBeDisplayed();
-        await expect(HomePage.bannerText).toBeDisplayed();
     });
 
     it('opens the how to record guidance', async () => {
@@ -52,8 +45,8 @@ describe('iOS home page', () => {
         await expect(HomePage.createdByHeader).toBeDisplayed();
         await expect(HomePage.tableRowDate(0)).toBeDisplayed();
         await expect(HomePage.tableRowVessel(0, 'ACHILLES')).toBeDisplayed();
-        await expect(HomePage.tableRowStatus(0, 'Submitted')).toBeDisplayed();
-        await expect(HomePage.tableRowCreatedBy(0, 'J.Smith')).toBeDisplayed();
+        await expect(HomePage.tableRowStatus(0, 'Unsent')).toBeDisplayed();
+        await expect(HomePage.tableRowCreatedBy(0, 'You')).toBeDisplayed();
 
         await HomePage.scrollToElement(HomePage.pagination);
         await expect(HomePage.pagination).toBeDisplayed();

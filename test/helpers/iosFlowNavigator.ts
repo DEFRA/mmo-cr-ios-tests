@@ -48,7 +48,6 @@ export class IosFlowNavigator {
     async selectTripToday(tripToday: 'yes' | 'no') {
         logStep(`selectTripToday tripToday=${tripToday}`);
         await TripTodayPage.selectTripToday(tripToday);
-        await TripTodayPage.continueToNextStep();
     }
 
     async addPort(portName: string) {

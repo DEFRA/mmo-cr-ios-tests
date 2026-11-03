@@ -29,18 +29,9 @@ describe(`iOS trip today page for vessel ${vessels[0]}`, () => {
         await expect(TripTodayPage.noOption).toBeDisplayed();
     });
 
-    it('shows a validation error when continuing without selecting yes or no', async () => {
-        logStep('shows a validation error when continuing without selecting yes or no');
-        await TripTodayPage.continueToNextStep();
-
-        await expect(TripTodayPage.questionHeading).toBeDisplayed();
-        await expect(TripTodayPage.validationError).toBeDisplayed();
-    });
-
     it('goes directly to add port when yes is selected', async () => {
         logStep('goes directly to add port when yes is selected');
         await TripTodayPage.selectTripToday('yes');
-        await TripTodayPage.continueToNextStep();
 
         await expect(AddPortPage.heading).toBeDisplayed();
     });
@@ -48,7 +39,6 @@ describe(`iOS trip today page for vessel ${vessels[0]}`, () => {
     it('goes to return date and then add port after entering valid dates', async () => {
         logStep('goes to return date and then add port after entering valid dates');
         await TripTodayPage.selectTripToday('no');
-        await TripTodayPage.continueToNextStep();
         const departureDate = datePartsFromToday(1);
         const returnDate = datePartsFromToday(0);
         await TripDateDeparturePage.enterDepartureDate(
@@ -68,7 +58,6 @@ describe(`iOS trip today page for vessel ${vessels[0]}`, () => {
     it('shows an error when the trip ended more than 24 hours ago', async () => {
         logStep('shows an error when the trip ended more than 24 hours ago');
         await TripTodayPage.selectTripToday('no');
-        await TripTodayPage.continueToNextStep();
         const departureDate = datePartsFromToday(3);
         const returnDate = datePartsFromToday(2);
         await TripDateDeparturePage.enterDepartureDate(
@@ -91,7 +80,6 @@ describe(`iOS trip today page for vessel ${vessels[0]}`, () => {
     it('allows correcting the trip end date from the submission nudge', async () => {
         logStep('allows correcting the trip end date from the submission nudge');
         await TripTodayPage.selectTripToday('no');
-        await TripTodayPage.continueToNextStep();
         const departureDate = datePartsFromToday(3);
         const lateReturnDate = datePartsFromToday(2);
         const validReturnDate = datePartsFromToday(0);

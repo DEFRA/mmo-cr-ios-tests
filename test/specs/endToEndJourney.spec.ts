@@ -72,7 +72,6 @@ describe('iOS end-to-end catch record journey', () => {
 
         await expect(TripTodayPage.questionHeading).toBeDisplayed();
         await TripTodayPage.selectTripToday(endToEndJourneyData.tripToday);
-        await TripTodayPage.continueToNextStep();
 
         await expect(AddPortPage.heading).toBeDisplayed();
         await AddPortPage.selectPort(endToEndJourneyData.port);
@@ -147,7 +146,7 @@ describe('iOS end-to-end catch record journey', () => {
         /* const todayParts = datePartsFromToday(0);
          const expectedDateString = `${todayParts.day} ${todayParts.monthName.substring(0, 3)} ${todayParts.year}`;
 
-        await expect(HomePage.yourTripsHeading).toBeDisplayed();
+        await expect(HomePage.catchRecordsHeading).toBeDisplayed();
         await expect(HomePage.tableRowDate(0)).toHaveAttr(
             'label',
             `View submission for ${expectedDateString}`,
@@ -166,7 +165,6 @@ describe('iOS end-to-end catch record journey', () => {
 
         await expect(TripTodayPage.questionHeading).toBeDisplayed();
         await TripTodayPage.selectTripToday(notSameDayJourneyData.tripToday);
-        await TripTodayPage.continueToNextStep();
 
         const departureDate = datePartsFromToday(1);
         const returnDate = datePartsFromToday(0);
@@ -255,7 +253,7 @@ describe('iOS end-to-end catch record journey', () => {
 
         /* const expectedDateString = `${returnDate.day} ${returnDate.monthName.substring(0, 3)} ${returnDate.year}`;
 
-        await expect(HomePage.yourTripsHeading).toBeDisplayed();
+        await expect(HomePage.catchRecordsHeading).toBeDisplayed();
         await expect(HomePage.tableRowDate(0)).toHaveAttr(
             'label',
             `View submission for ${expectedDateString}`,

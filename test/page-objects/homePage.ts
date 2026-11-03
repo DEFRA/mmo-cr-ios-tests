@@ -2,22 +2,12 @@ import { BasePage } from './basePage.ts';
 import { logStep } from '../common/logger.ts';
 
 export class HomePage extends BasePage {
-    get yourTripsHeading() {
-        return $('~Your trips');
+    get catchRecordsHeading() {
+        return $('~Your catch records');
     }
 
-    get tripsDescription() {
-        return $("~View trips you've already submitted.");
-    }
-
-    get tripDateDescription() {
-        return $('~Select an end date to see the details you recorded.');
-    }
-
-    get appUsageNote() {
-        return $(
-            '~Note: You can only add new trips and view your account settings on the web service, not in this app.',
-        );
+    get webServiceNote() {
+        return $('~To edit trips or manage your account settings, use the web service.');
     }
 
     get tripEndDateHeader() {
@@ -57,7 +47,7 @@ export class HomePage extends BasePage {
     }
 
     get statusHelpLink() {
-        return $('~Understanding catch record statuses');
+        return $('~Home.statusHelp');
     }
 
     get unsentStatusDescription() {
@@ -70,14 +60,6 @@ export class HomePage extends BasePage {
 
     get warningBox() {
         return $('~Home.warningBox');
-    }
-
-    get bannerTitle() {
-        return $('~Important');
-    }
-
-    get bannerText() {
-        return $('~The Catch Records service will be available from 1 October 2026.');
     }
 
     get contactDefraLink() {

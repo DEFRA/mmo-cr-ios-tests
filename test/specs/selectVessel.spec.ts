@@ -23,40 +23,16 @@ describe('iOS select vessel page', () => {
         await expect(SelectVesselPage.vesselOption('hercules')).not.toBeSelected();
     });
 
-    it('keeps the selected vessel selected and allows changing the selection', async () => {
-        logStep('keeps the selected vessel selected and allows changing the selection');
-        await SelectVesselPage.vesselOption('achilles').click();
-        await expect(SelectVesselPage.vesselOption('achilles')).toBeSelected();
-        await expect(SelectVesselPage.vesselOption('hercules')).not.toBeSelected();
-
-        await SelectVesselPage.vesselOption('achilles').click();
-        await expect(SelectVesselPage.vesselOption('achilles')).toBeSelected();
-
-        await SelectVesselPage.vesselOption('hercules').click();
-        await expect(SelectVesselPage.vesselOption('achilles')).not.toBeSelected();
-        await expect(SelectVesselPage.vesselOption('hercules')).toBeSelected();
-    });
-
-    it('shows a validation error when continuing without selecting a vessel', async () => {
-        logStep('shows a validation error when continuing without selecting a vessel');
-        await SelectVesselPage.saveContinueButton.click();
-
-        await expect(SelectVesselPage.selectVesselHeading).toBeDisplayed();
-        await expect(SelectVesselPage.vesselValidationError).toBeDisplayed();
-    });
-
     it('continues to the trip-today page after selecting ACHILLES', async () => {
         logStep('continues to the trip-today page after selecting ACHILLES');
-        await SelectVesselPage.vesselOption('achilles').click();
-        await SelectVesselPage.saveContinueButton.click();
+        await SelectVesselPage.selectVessel('ACHILLES');
 
         await expect(TripTodayPage.questionHeading).toBeDisplayed();
     });
 
     it('continues to the trip-today page after selecting HERCULES', async () => {
         logStep('continues to the trip-today page after selecting HERCULES');
-        await SelectVesselPage.vesselOption('hercules').click();
-        await SelectVesselPage.saveContinueButton.click();
+        await SelectVesselPage.selectVessel('HERCULES');
 
         await expect(TripTodayPage.questionHeading).toBeDisplayed();
     });
@@ -65,7 +41,7 @@ describe('iOS select vessel page', () => {
         logStep('returns to the dashboard when the back link is clicked');
         await SelectVesselPage.backButton.click();
 
-        await HomePage.scrollToElement(HomePage.yourTripsHeading);
-        await expect(HomePage.yourTripsHeading).toBeDisplayed();
+        await HomePage.scrollToElement(HomePage.catchRecordsHeading);
+        await expect(HomePage.catchRecordsHeading).toBeDisplayed();
     });
 });
