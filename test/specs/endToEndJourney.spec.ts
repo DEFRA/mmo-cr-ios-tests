@@ -11,7 +11,6 @@ import SelectVesselPage from '../page-objects/selectVesselPage.ts';
 import SignInPage from '../page-objects/signInPage.ts';
 import CheckYourAnswersPage from '../page-objects/checkYourAnswersPage.ts';
 import LandingStoragePage from '../page-objects/landingStoragePage.ts';
-import SubmissionConfirmationPage from '../page-objects/submissionConfirmationPage.ts';
 import SubmissionSuccessPage from '../page-objects/submissionSuccessPage.ts';
 import TripTodayPage from '../page-objects/tripTodayPage.ts';
 import TripDateDeparturePage from '../page-objects/tripDateDeparturePage.ts';
@@ -131,26 +130,9 @@ describe('iOS end-to-end catch record journey', () => {
         await LandingStoragePage.continueToNextStep();
 
         await expect(CheckYourAnswersPage.heading).toBeDisplayed();
-        await CheckYourAnswersPage.continueToNextStep();
-
-        await expect(SubmissionConfirmationPage.heading).toBeDisplayed();
-        await SubmissionConfirmationPage.confirmSubmission();
-        await SubmissionConfirmationPage.acceptAndSubmit();
+        await CheckYourAnswersPage.acceptAndSubmit();
 
         await expect(SubmissionSuccessPage.submissionMessage).toBeDisplayed();
-        await SubmissionSuccessPage.viewYourCatchRecords();
-
-        /* const todayParts = datePartsFromToday(0);
-         const expectedDateString = `${todayParts.day} ${todayParts.monthName.substring(0, 3)} ${todayParts.year}`;
-
-        await expect(HomePage.catchRecordsHeading).toBeDisplayed();
-        await expect(HomePage.tableRowDate(0)).toHaveAttr(
-            'label',
-            `View submission for ${expectedDateString}`,
-        );
-        await expect(HomePage.tableRowVessel(0, endToEndJourneyData.vessel)).toBeDisplayed();
-        await expect(HomePage.tableRowStatus(0, 'Unsent')).toBeDisplayed();
-        */
     });
 
     it('completes and submits the catch record journey for a trip not today', async () => {
@@ -236,23 +218,8 @@ describe('iOS end-to-end catch record journey', () => {
         await LandingStoragePage.continueToNextStep();
 
         await expect(CheckYourAnswersPage.heading).toBeDisplayed();
-        await CheckYourAnswersPage.continueToNextStep();
-
-        await expect(SubmissionConfirmationPage.heading).toBeDisplayed();
-        await SubmissionConfirmationPage.confirmSubmission();
-        await SubmissionConfirmationPage.acceptAndSubmit();
+        await CheckYourAnswersPage.acceptAndSubmit();
 
         await expect(SubmissionSuccessPage.submissionMessage).toBeDisplayed();
-        await SubmissionSuccessPage.viewYourCatchRecords();
-
-        /* const expectedDateString = `${returnDate.day} ${returnDate.monthName.substring(0, 3)} ${returnDate.year}`;
-
-        await expect(HomePage.catchRecordsHeading).toBeDisplayed();
-        await expect(HomePage.tableRowDate(0)).toHaveAttr(
-            'label',
-            `View submission for ${expectedDateString}`,
-        );
-        await expect(HomePage.tableRowVessel(0, notSameDayJourneyData.vessel)).toBeDisplayed();
-        */
     });
 });

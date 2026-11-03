@@ -139,7 +139,9 @@ export class BasePage {
                         direction: 'down',
                         name: selectorStr.substring(1),
                     });
-                    return; // Fast scroll succeeded
+                    if (await element.isDisplayed()) {
+                        return;
+                    }
                 } catch {
                     // fall through to the next scroll strategy
                 }
@@ -151,7 +153,9 @@ export class BasePage {
                 await browser.execute('mobile: scrollToElement', {
                     element: elementId,
                 });
-                return;
+                if (await element.isDisplayed()) {
+                    return;
+                }
             } catch {
                 // fall through to the next scroll strategy
             }
@@ -162,7 +166,9 @@ export class BasePage {
                     elementId: elementId,
                     toVisible: true,
                 });
-                return;
+                if (await element.isDisplayed()) {
+                    return;
+                }
             } catch {
                 // fall back to swiping
             }

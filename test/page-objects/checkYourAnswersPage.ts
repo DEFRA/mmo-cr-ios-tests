@@ -98,6 +98,12 @@ export class CheckYourAnswersPage extends BaseCatchRecordPage {
         return $('~CatchRecord.checkYourAnswers.accept');
     }
 
+    async acceptAndSubmit() {
+        logStep('acceptAndSubmit');
+        await this.scrollToElement(this.acceptAndSubmitButton);
+        await this.acceptAndSubmitButton.click();
+    }
+
     get changeTripVesselButton() {
         return $('~CatchRecord.checkYourAnswers.change.trip.vessel');
     }
