@@ -44,6 +44,7 @@ Requires Xcode and Appium with the XCUITest driver (`npm i -g appium && appium d
 
 ```bash
 npm run test:ios
+npm run test:ios:spec ./test/specs/<file>.ts
 ```
 
 Optional: `IOS_DEVICE_NAME`, `IOS_PLATFORM_VERSION`, `IOS_UDID`, `IOS_BUNDLE_ID` (uninstalls the app first on a simulator), `APPIUM_NO_RESET`, `APPIUM_PORT`.
@@ -51,7 +52,8 @@ Optional: `IOS_DEVICE_NAME`, `IOS_PLATFORM_VERSION`, `IOS_UDID`, `IOS_BUNDLE_ID`
 #### BrowserStack
 
 ```bash
-npm run test:browserstack
+npm run test:ios:browserstack
+npm run test:ios:browserstack:spec ./test/specs/<file>.ts
 ```
 
 Requires `BROWSERSTACK_USERNAME`, `BROWSERSTACK_ACCESS_KEY` and `BROWSERSTACK_IOS_APP_URL` (the `bs://...` URL of an app already uploaded to BrowserStack). Optional: `BROWSERSTACK_MAX_INSTANCES` (default 2, must not exceed the plan's parallel sessions).
