@@ -8,10 +8,8 @@
     },
     "scripts": {
         "clean": "rm -rf allure-results && rm -rf allure-report",
-        "test:ios": "wdio run ./config/wdio.ios.conf.ts",
-        "test:ios:spec": "wdio run ./config/wdio.ios.conf.ts --spec",
+        "test:ios:feature": "wdio run ./config/wdio.ios.conf.ts",
         "test:ios:browserstack": "NODE_USE_ENV_PROXY=1 wdio run ./config/wdio.browserstack.conf.ts",
-        "test:ios:browserstack:spec": "NODE_USE_ENV_PROXY=1 wdio run ./config/wdio.browserstack.conf.ts --spec",
         "format": "prettier --write '**/*.{ts,md,json}'",
         "format:check": "prettier --check '**/*.{ts,md,json}'",
         "typecheck": "tsc",
@@ -21,6 +19,7 @@
         "postinstall": "npm run setup:husky",
         "setup:husky": "node -e \"try { (await import('husky')).default() } catch (e) { if (e.code !== 'ERR_MODULE_NOT_FOUND') throw e }\" --input-type module",
         "report": "allure generate allure-results --clean",
+        "generate:report": "npm run report && allure open",
         "report:publish": "npm run report; ./bin/publish-tests.sh"
     },
     "author": "Defra DDTS",

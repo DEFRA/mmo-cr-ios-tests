@@ -46,15 +46,15 @@ Page names usable in steps such as `Then I should be on the add gear page` are r
 
 Configs live in `config/`, sharing `config/wdio.base.conf.ts`. Variables can be set in your shell or in `.env`.
 
-Scenarios tagged `@skip` are excluded by default. Set `CUCUMBER_TAGS` to run a different [tag expression](https://cucumber.io/docs/cucumber/api/#tag-expressions), e.g. `CUCUMBER_TAGS='@addPort and not @skip' npm run test:ios`.
+Scenarios tagged `@skip` are excluded by default. Set `CUCUMBER_TAGS` to run a different [tag expression](https://cucumber.io/docs/cucumber/api/#tag-expressions), e.g. `CUCUMBER_TAGS='@addPort and not @skip' npm run test:ios:feature`.
 
 #### Local simulator/device (Appium)
 
 Requires Xcode and Appium with the XCUITest driver (`npm i -g appium && appium driver install xcuitest`). Place the `.ipa`/`.app` in `./app`, then:
 
 ```bash
-npm run test:ios
-npm run test:ios:spec ./test/features/<file>.feature
+npm run test:ios:feature
+npm run test:ios:feature -- --spec ./test/features/<file>.feature
 ```
 
 Optional: `IOS_DEVICE_NAME`, `IOS_PLATFORM_VERSION`, `IOS_UDID`, `IOS_BUNDLE_ID` (uninstalls the app first on a simulator), `APPIUM_NO_RESET`, `APPIUM_PORT`.
@@ -63,7 +63,7 @@ Optional: `IOS_DEVICE_NAME`, `IOS_PLATFORM_VERSION`, `IOS_UDID`, `IOS_BUNDLE_ID`
 
 ```bash
 npm run test:ios:browserstack
-npm run test:ios:browserstack:spec ./test/features/<file>.feature
+npm run test:ios:browserstack -- --spec ./test/features/<file>.feature
 ```
 
 Requires `BROWSERSTACK_USERNAME`, `BROWSERSTACK_ACCESS_KEY` and `BROWSERSTACK_IOS_APP_URL` (the `bs://...` URL of an app already uploaded to BrowserStack). Optional: `BROWSERSTACK_DEVICE_NAME` (default `iPhone 17`), `BROWSERSTACK_OS_VERSION` (default `26`), `BROWSERSTACK_MAX_INSTANCES` (default 2, must not exceed the plan's parallel sessions).

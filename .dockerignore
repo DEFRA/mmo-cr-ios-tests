@@ -3,3 +3,11 @@ Dockerfile
 .git
 .github
 .husky
+.env
+.env.*
+app/
+log/
+logs/
+allure-results/
+allure-report/
+FAILED
