@@ -26,7 +26,6 @@ export default defineConfig([
             sourceType: 'module',
             globals: {
                 ...globals.node,
-                ...globals.mocha,
             },
             parserOptions: {
                 projectService: true,

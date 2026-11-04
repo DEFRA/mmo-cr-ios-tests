@@ -59,8 +59,6 @@ export const config: WebdriverIO.Config = {
         logInfo('BrowserStack iOS session starting...');
     },
 
-    specs: ['../test/specs/**/*.spec.ts'],
-
     connectionRetryTimeout: 90000,
 };
 

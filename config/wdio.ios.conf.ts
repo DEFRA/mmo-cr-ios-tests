@@ -38,8 +38,6 @@ export const config: WebdriverIO.Config = {
         },
     ],
 
-    specs: ['../test/specs/**/*.spec.ts'],
-
     runner: 'local',
     bail: 0,
     connectionRetryTimeout: 120000,

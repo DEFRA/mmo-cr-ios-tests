@@ -67,23 +67,31 @@ export const baseConfig: Partial<WebdriverIO.Config> = {
     connectionRetryCount: 3,
     port: appiumPort,
 
-    framework: 'mocha',
-    mochaOpts: {
-        ui: 'bdd',
+    framework: 'cucumber',
+    specs: ['../test/features/**/*.feature'],
+    cucumberOpts: {
+        import: ['./test/support/**/*.ts', './test/step-definitions/**/*.ts'],
         timeout: 120000,
+        tags: process.env.CUCUMBER_TAGS ?? 'not @skip',
+        failFast: false,
+        snippets: true,
+        source: true,
+        strict: true,
     },
 
-    beforeTest: (test) => {
-        logInfo(`Starting test: ${test.title}`);
+    beforeScenario: (world) => {
+        logInfo(`Starting scenario: ${world.pickle.name}`);
     },
 
-    afterTest: async (test, _context, { error }: { error?: unknown }) => {
-        if (error) {
-            logWarn(`Test FAILED: ${test.title}`);
+    afterStep: async (step, _scenario, { passed }) => {
+        if (!passed) {
+            logWarn(`Step FAILED: ${step.text}`);
             await browser.takeScreenshot();
-        } else {
-            logInfo(`Test PASSED: ${test.title}`);
         }
+    },
+
+    afterScenario: (world, { passed }) => {
+        logInfo(`Scenario ${passed ? 'PASSED' : 'FAILED'}: ${world.pickle.name}`);
     },
 
     reporters: [
@@ -94,6 +102,7 @@ export const baseConfig: Partial<WebdriverIO.Config> = {
                 outputDir: 'allure-results',
                 disableWebdriverStepsReporting: true,
                 disableWebdriverScreenshotsReporting: false,
+                useCucumberStepReporter: true,
             },
         ],
     ],
