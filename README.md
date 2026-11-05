@@ -3,13 +3,13 @@ mmo-cr-ios-tests
 WDIO + Appium tests for the native iOS app, run on BrowserStack real devices.
 
 - [Local](#local-development)
-  - [Requirements](#requirements)
-    - [Node.js](#nodejs)
-  - [Setup](#setup)
-  - [Running the tests](#running-the-tests)
+    - [Requirements](#requirements)
+        - [Node.js](#nodejs)
+    - [Setup](#setup)
+    - [Running the tests](#running-the-tests)
 - [Production](#production)
 - [Licence](#licence)
-  - [About the licence](#about-the-licence)
+    - [About the licence](#about-the-licence)
 
 ## Local Development
 
@@ -17,7 +17,7 @@ WDIO + Appium tests for the native iOS app, run on BrowserStack real devices.
 
 #### Node.js
 
-Please install [Node.js](http://nodejs.org/) `>= v20` and [npm](https://nodejs.org/) `>= v9`. You will find it
+Please install [Node.js](http://nodejs.org/) `>= v24` and [npm](https://nodejs.org/) `>= v9`. You will find it
 easier to use the Node Version Manager [nvm](https://github.com/creationix/nvm)
 
 To use the correct version of Node.js for this application, via nvm:
@@ -36,13 +36,37 @@ npm install
 
 ### Running the tests
 
-The app tests (`test/app/specs`) run on a BrowserStack real device using `wdio.browserstack.conf.js`:
+Tests are written in BDD style with [Cucumber](https://cucumber.io/docs/gherkin/reference/):
+
+- `test/features/**/*.feature` - Gherkin scenarios
+- `test/step-definitions/**/*.steps.ts` - step definitions, built on the page objects in `test/page-objects/`
+- `test/support/` - custom world, parameter types (`{page}`, `{vessel}`, `{answer}`, `{portDirection}`) and hooks
+
+Page names usable in steps such as `Then I should be on the add gear page` are registered in `test/support/pages.ts`.
+
+Configs live in `config/`, sharing `config/wdio.base.conf.ts`. Variables can be set in your shell or in `.env`.
+
+Scenarios tagged `@skip` are excluded by default. Set `CUCUMBER_TAGS` to run a different [tag expression](https://cucumber.io/docs/cucumber/api/#tag-expressions), e.g. `CUCUMBER_TAGS='@addPort and not @skip' npm run test:ios:feature`.
+
+#### Local simulator/device (Appium)
+
+Requires Xcode and Appium with the XCUITest driver (`npm i -g appium && appium driver install xcuitest`). Place the `.ipa`/`.app` in `./app`, then:
 
 ```bash
-npm run test:browserstack
+npm run test:ios:feature
+npm run test:ios:feature -- --spec ./test/features/<file>.feature
 ```
 
-Set `BROWSERSTACK_USERNAME` and `BROWSERSTACK_KEY` in your shell or in `.env`. Optional overrides: `BROWSERSTACK_APP_ID`, `BROWSERSTACK_DEVICE`, `BROWSERSTACK_OS_VERSION`.
+Optional: `IOS_DEVICE_NAME`, `IOS_PLATFORM_VERSION`, `IOS_UDID`, `IOS_BUNDLE_ID` (uninstalls the app first on a simulator), `APPIUM_NO_RESET`, `APPIUM_PORT`.
+
+#### BrowserStack
+
+```bash
+npm run test:ios:browserstack
+npm run test:ios:browserstack -- --spec ./test/features/<file>.feature
+```
+
+Requires `BROWSERSTACK_USERNAME`, `BROWSERSTACK_ACCESS_KEY` and `BROWSERSTACK_IOS_APP_URL` (the `bs://...` URL of an app already uploaded to BrowserStack). Optional: `BROWSERSTACK_DEVICE_NAME` (default `iPhone 17`), `BROWSERSTACK_OS_VERSION` (default `26`), `BROWSERSTACK_MAX_INSTANCES` (default 2, must not exceed the plan's parallel sessions).
 
 ## Production
 

@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "target": "es2022",
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+        "lib": ["es2022"],
+        "types": [
+            "node",
+            "@wdio/globals/types",
+            "@wdio/cucumber-framework",
+            "@wdio/browserstack-service"
+        ],
+        "strict": true,
+        "noUncheckedIndexedAccess": true,
+        "noImplicitOverride": true,
+        "noFallthroughCasesInSwitch": true,
+        "exactOptionalPropertyTypes": true,
+        "verbatimModuleSyntax": true,
+        "isolatedModules": true,
+        "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "noEmit": true
+    },
+    "include": ["**/*.ts"],
+    "exclude": ["node_modules", "allure-results", "allure-report"]
+}

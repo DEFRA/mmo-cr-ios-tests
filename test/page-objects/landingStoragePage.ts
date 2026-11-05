@@ -1,0 +1,37 @@
+import { BaseCatchRecordPage } from './baseCatchRecordPage.ts';
+import { logStep } from '../common/logger.ts';
+
+export class LandingStoragePage extends BaseCatchRecordPage {
+    protected override pageId = 'landingStorage';
+
+    get description() {
+        return $(
+            '~For example, keeping white fish onboard for bait or storing shellfish in keep pots.',
+        );
+    }
+
+    get radioGroup() {
+        return $('~CatchRecord.landingStorage.radioGroup');
+    }
+
+    get yesOption() {
+        return $('~CatchRecord.landingStorage.option.yes');
+    }
+
+    get noOption() {
+        return $('~CatchRecord.landingStorage.option.no');
+    }
+
+    get validationError() {
+        return $('~CatchRecord.landingStorage.error');
+    }
+
+    async selectLandingStorage(option: 'yes' | 'no') {
+        logStep('selectLandingStorage with option: ' + option);
+        const selectedOption = option === 'yes' ? this.yesOption : this.noOption;
+
+        await selectedOption.click();
+    }
+}
+
+export default new LandingStoragePage();
