@@ -54,6 +54,10 @@ export class SignInPage extends BasePage {
         return $('~SignIn.createAccountLink');
     }
 
+    get createAccountIcon() {
+        return $('~chevron.right');
+    }
+
     get vesselOwnerHeading() {
         return $('~Vessel owner:');
     }
@@ -109,6 +113,24 @@ export class SignInPage extends BasePage {
         logStep('openCreateAccount');
         await this.createAccountLink.click();
         await this.vesselOwnerHeading.waitForDisplayed({ timeout: 10000 });
+    }
+
+    async tapCreateAccount(times: number) {
+        logStep(`tapCreateAccount times=${String(times)}`);
+        for (let i = 0; i < times; i++) {
+            await this.createAccountLink.click();
+        }
+    }
+
+    async tapSignIn(times = 1) {
+        logStep(`tapSignIn times=${String(times)}`);
+        for (let i = 0; i < times; i++) {
+            // The button disappears once navigation to home has started
+            if (!(await this.signInButton.isDisplayed())) {
+                break;
+            }
+            await this.signInButton.click();
+        }
     }
 }
 
