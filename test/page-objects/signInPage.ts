@@ -6,12 +6,20 @@ export class SignInPage extends BasePage {
         return $('~SignIn.heading');
     }
 
+    get emailLabel() {
+        return $('//XCUIElementTypeStaticText[@name="SignIn.emailField"]');
+    }
+
     get emailField() {
         return $('//XCUIElementTypeTextField[@name="SignIn.emailField"]');
     }
 
     get emailError() {
-        return $('~Enter email address');
+        return $('~SignIn.emailError');
+    }
+
+    get passwordLabel() {
+        return $('//XCUIElementTypeStaticText[@name="Password"]');
     }
 
     get passwordField() {
@@ -19,7 +27,11 @@ export class SignInPage extends BasePage {
     }
 
     get passwordError() {
-        return $('~Enter password');
+        return $('~SignIn.passwordError');
+    }
+
+    get signInError() {
+        return $('~Sorry, there is a problem signing in. Try again later');
     }
 
     get passwordVisibilityToggle() {
@@ -40,6 +52,24 @@ export class SignInPage extends BasePage {
 
     get createAccountLink() {
         return $('~SignIn.createAccountLink');
+    }
+
+    get vesselOwnerHeading() {
+        return $('~Vessel owner:');
+    }
+
+    get vesselOwnerGuidance() {
+        return $(
+            '~You will receive an email invitation to register when your vessel is added to the system.',
+        );
+    }
+
+    get skipperOrAgentHeading() {
+        return $('~Skipper or agent:');
+    }
+
+    get skipperOrAgentGuidance() {
+        return $('~Ask your vessel owner to add you. They can do this from their account.');
     }
 
     async enterEmail(email: string) {
@@ -78,6 +108,7 @@ export class SignInPage extends BasePage {
     async openCreateAccount() {
         logStep('openCreateAccount');
         await this.createAccountLink.click();
+        await this.vesselOwnerHeading.waitForDisplayed({ timeout: 10000 });
     }
 }
 

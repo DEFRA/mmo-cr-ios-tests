@@ -65,3 +65,14 @@ Then('the sign-in button should be displayed', async () => {
 Then('the password visibility toggle should be displayed', async () => {
     await expect(SignInPage.passwordVisibilityToggle).toBeDisplayed();
 });
+
+When('I tap the create an account link', async () => {
+    await SignInPage.openCreateAccount();
+});
+
+Then('I should see the create an account guidance', async () => {
+    await expect(SignInPage.vesselOwnerHeading).toBeDisplayed();
+    await expect(SignInPage.vesselOwnerGuidance).toBeDisplayed();
+    await expect(SignInPage.skipperOrAgentHeading).toBeDisplayed();
+    await expect(SignInPage.skipperOrAgentGuidance).toBeDisplayed();
+});

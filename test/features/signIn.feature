@@ -33,3 +33,7 @@ Feature: Sign in
     Then the password visibility toggle should be displayed
     When I toggle the password visibility
     Then the password visibility toggle should be displayed
+
+  Scenario: Create an account guidance is displayed
+    When I tap the create an account link
+    Then I should see the create an account guidance
