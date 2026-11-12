@@ -124,6 +124,7 @@ export class SignInPage extends BasePage {
 
     async tapSignIn(times = 1) {
         logStep(`tapSignIn times=${String(times)}`);
+        await this.signInButton.waitForEnabled({ timeout: 10000 });
         for (let i = 0; i < times; i++) {
             // The button disappears once navigation to home has started
             if (!(await this.signInButton.isDisplayed())) {

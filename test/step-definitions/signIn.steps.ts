@@ -28,23 +28,8 @@ When(
     },
 );
 
-When(
-    'I enter an email with a {int} character local part and a {int} character password',
-    async function (this: CatchRecordWorld, localPartLength: number, passwordLength: number) {
-        await enterCredentials(
-            this,
-            `${'a'.repeat(localPartLength)}@example.com`,
-            'P'.repeat(passwordLength),
-        );
-    },
-);
-
 When('I enter the password {string}', async (password: string) => {
     await SignInPage.enterPassword(password);
-});
-
-When('I toggle the password visibility', async () => {
-    await SignInPage.togglePasswordVisibility();
 });
 
 Then('the entered email and password should be retained', async function (this: CatchRecordWorld) {
@@ -53,19 +38,6 @@ Then('the entered email and password should be retained', async function (this: 
     expect((await SignInPage.passwordField.getAttribute('value'))?.length).toBe(
         this.enteredPassword.length,
     );
-});
-
-Then('the email and password fields should be empty', async () => {
-    expect(await SignInPage.emailField.getAttribute('value')).toBeNull();
-    expect(await SignInPage.passwordField.getAttribute('value')).toBeNull();
-});
-
-Then('the sign-in button should be displayed', async () => {
-    await expect(SignInPage.signInButton).toBeDisplayed();
-});
-
-Then('the password visibility toggle should be displayed', async () => {
-    await expect(SignInPage.passwordVisibilityToggle).toBeDisplayed();
 });
 
 When('I tap the create an account link', async () => {
@@ -84,6 +56,10 @@ Then('I should not see the create an account guidance', async () => {
     await expect(SignInPage.vesselOwnerGuidance).not.toBeDisplayed();
     await expect(SignInPage.skipperOrAgentHeading).not.toBeDisplayed();
     await expect(SignInPage.skipperOrAgentGuidance).not.toBeDisplayed();
+});
+
+When('I tap the create an account link again', async () => {
+    await SignInPage.tapCreateAccount(1);
 });
 
 When('I tap the create an account link {int} times', async (times: number) => {
