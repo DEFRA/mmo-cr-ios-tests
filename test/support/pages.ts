@@ -5,6 +5,7 @@ import AddSpeciesPage from '../page-objects/addSpeciesPage.ts';
 import CatchLocationManualEntryPage from '../page-objects/catchLocationManualEntryPage.ts';
 import CatchLocationPage from '../page-objects/catchLocationPage.ts';
 import CheckYourAnswersPage from '../page-objects/checkYourAnswersPage.ts';
+import DataPreparationPage from '../page-objects/dataPreparationPage.ts';
 import GearMeasurementsPage from '../page-objects/gearMeasurementsPage.ts';
 import HomePage from '../page-objects/homePage.ts';
 import LandingStoragePage from '../page-objects/landingStoragePage.ts';
@@ -31,6 +32,10 @@ export interface PageDefinition {
 // Keys are the page names used in feature files, e.g. "Then I should be on the add gear page".
 const pages = {
     'sign-in': { page: SignInPage, heading: () => SignInPage.heading },
+    'data preparation': {
+        page: DataPreparationPage,
+        heading: () => DataPreparationPage.heading,
+    },
     home: {
         page: HomePage,
         heading: () => HomePage.catchRecordsHeading,

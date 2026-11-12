@@ -1,4 +1,5 @@
 import { Then, When } from '@wdio/cucumber-framework';
+import { getIosTestCredentials } from '../helpers/testCredentials.ts';
 import SignInPage from '../page-objects/signInPage.ts';
 import type { CatchRecordWorld } from '../support/world.ts';
 
@@ -17,6 +18,7 @@ Then('I should see the sign-in controls', async () => {
     await expect(SignInPage.signInButton).toBeDisplayed();
     await expect(SignInPage.forgottenPasswordLink).toBeDisplayed();
     await expect(SignInPage.createAccountLink).toBeDisplayed();
+    await expect(SignInPage.createAccountIcon).toBeDisplayed();
 });
 
 When(
@@ -26,23 +28,8 @@ When(
     },
 );
 
-When(
-    'I enter an email with a {int} character local part and a {int} character password',
-    async function (this: CatchRecordWorld, localPartLength: number, passwordLength: number) {
-        await enterCredentials(
-            this,
-            `${'a'.repeat(localPartLength)}@example.com`,
-            'P'.repeat(passwordLength),
-        );
-    },
-);
-
 When('I enter the password {string}', async (password: string) => {
     await SignInPage.enterPassword(password);
-});
-
-When('I toggle the password visibility', async () => {
-    await SignInPage.togglePasswordVisibility();
 });
 
 Then('the entered email and password should be retained', async function (this: CatchRecordWorld) {
@@ -53,15 +40,97 @@ Then('the entered email and password should be retained', async function (this: 
     );
 });
 
-Then('the email and password fields should be empty', async () => {
-    expect(await SignInPage.emailField.getAttribute('value')).toBeNull();
-    expect(await SignInPage.passwordField.getAttribute('value')).toBeNull();
+When('I tap the create an account link', async () => {
+    await SignInPage.openCreateAccount();
 });
 
-Then('the sign-in button should be displayed', async () => {
-    await expect(SignInPage.signInButton).toBeDisplayed();
+Then('I should see the create an account guidance', async () => {
+    await expect(SignInPage.vesselOwnerHeading).toBeDisplayed();
+    await expect(SignInPage.vesselOwnerGuidance).toBeDisplayed();
+    await expect(SignInPage.skipperOrAgentHeading).toBeDisplayed();
+    await expect(SignInPage.skipperOrAgentGuidance).toBeDisplayed();
 });
 
-Then('the password visibility toggle should be displayed', async () => {
-    await expect(SignInPage.passwordVisibilityToggle).toBeDisplayed();
+Then('I should not see the create an account guidance', async () => {
+    await expect(SignInPage.vesselOwnerHeading).not.toBeDisplayed();
+    await expect(SignInPage.vesselOwnerGuidance).not.toBeDisplayed();
+    await expect(SignInPage.skipperOrAgentHeading).not.toBeDisplayed();
+    await expect(SignInPage.skipperOrAgentGuidance).not.toBeDisplayed();
+});
+
+When('I tap the create an account link again', async () => {
+    await SignInPage.tapCreateAccount(1);
+});
+
+When('I tap the create an account link {int} times', async (times: number) => {
+    await SignInPage.tapCreateAccount(times);
+});
+
+When('I enter the email {string}', async function (this: CatchRecordWorld, email: string) {
+    this.enteredEmail = email;
+    await SignInPage.enterEmail(email);
+});
+
+Then('the password should be masked', async function (this: CatchRecordWorld) {
+    expect(await SignInPage.passwordField.getAttribute('type')).toBe(
+        'XCUIElementTypeSecureTextField',
+    );
+    expect(await SignInPage.passwordField.getAttribute('value')).not.toBe(this.enteredPassword);
+});
+
+When('I tap the sign in button', async () => {
+    await SignInPage.tapSignIn();
+});
+
+When('I tap the sign in button {int} times', async (times: number) => {
+    await SignInPage.tapSignIn(times);
+    await SignInPage.dismissSavePasswordPrompt();
+});
+
+When('I enter valid credentials', async function (this: CatchRecordWorld) {
+    const { email, password } = getIosTestCredentials();
+    await enterCredentials(this, email, password);
+});
+
+When('I sign in with valid credentials', async () => {
+    const { email, password } = getIosTestCredentials();
+    await SignInPage.signIn(email, password);
+});
+
+When('I sign in with the valid email in upper case', async () => {
+    const { email, password } = getIosTestCredentials();
+    await SignInPage.signIn(email.toUpperCase(), password);
+});
+
+When('I sign in with the valid email surrounded by spaces', async () => {
+    const { email, password } = getIosTestCredentials();
+    await SignInPage.signIn(`  ${email}  `, password);
+});
+
+Then('I should see the sign-in error message', async () => {
+    await expect(SignInPage.signInError).toBeDisplayed();
+});
+
+Then('I should not see the sign-in error message', async () => {
+    await expect(SignInPage.signInError).not.toBeDisplayed();
+});
+
+Then('I should see the email validation error', async () => {
+    await expect(SignInPage.emailError).toBeDisplayed();
+});
+
+Then('I should not see the email validation error', async () => {
+    await expect(SignInPage.emailError).not.toBeDisplayed();
+});
+
+Then('I should see the password validation error', async () => {
+    await expect(SignInPage.passwordError).toBeDisplayed();
+});
+
+Then('I should not see the password validation error', async () => {
+    await expect(SignInPage.passwordError).not.toBeDisplayed();
+});
+
+When('I rotate the device to {word}', async (orientation: string) => {
+    await driver.setOrientation(orientation.toUpperCase());
 });

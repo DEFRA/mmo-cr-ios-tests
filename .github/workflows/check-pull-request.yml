@@ -16,6 +16,16 @@ jobs:
         name: Run Pull Request Checks
         runs-on: ubuntu-latest
         steps:
+            - name: Check branch name
+              env:
+                  BRANCH_NAME: ${{ github.head_ref }}
+              run: |
+                  pattern='^(feature|bugfix|hotfix|chore)/CRAR-[0-9]+-[a-z0-9-]+$'
+                  if [[ ! "$BRANCH_NAME" =~ $pattern ]]; then
+                      echo "::error::Branch '$BRANCH_NAME' must match $pattern (e.g. feature/CRAR-285-sign-in-screen)"
+                      exit 1
+                  fi
+
             - name: Checkout code
               uses: actions/checkout@v4
 

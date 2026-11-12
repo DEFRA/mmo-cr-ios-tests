@@ -34,17 +34,17 @@ Expose elements as getters returning WDIO elements, without `await` in getters. 
 2. Determine the screen name from the user's input or clear page content. If it is ambiguous, ask before choosing a class and file name.
 3. Search `test/page-objects/` for an existing page object for this screen. Update it rather than creating a duplicate, and follow its current style.
 4. Build selectors only from observed XML attributes or explicitly user-provided evidence. Use the repository's existing selector helpers where appropriate.
-5. Add small, intention-revealing action methods where justified. Log actions with `logStep`; wait for elements when the existing interaction pattern or app timing requires it. Do not add generic wrappers or duplicate functionality already inherited from the base page.
-6. If the screen is part of the catch-record journey, mention whether `test/helpers/iosFlowNavigator.ts` would need a new journey action. Do not modify the navigator unless the user asks.
+5. Add small, intention-revealing action methods where justified. Log actions with `logStep`; wait on element state (`waitForDisplayed`, `waitForEnabled`) when app timing requires it, never fixed `driver.pause()` calls. Do not duplicate functionality inherited from the base page: `BasePage` already provides `openApp`, `close`, alert handling, `dismissSavePasswordPrompt`, `scrollToElement`, `selector(name)`, `textField(name)`, the header language toggle, and tab-bar getters; `BaseCatchRecordPage` adds the back button, reference number, branding, and save-and-continue.
+6. Report follow-ups that are outside this agent's scope, without making them: whether `test/helpers/iosFlowNavigator.ts` needs a new journey action, and whether the screen should be registered in `test/support/pages.ts` (required for steps such as `Then I should be on the <page> page`).
 7. If selector validation is necessary and an iOS device/session is available, use Appium or WebdriverIO MCP tools to inspect the live iOS app. Do not start a session if the supplied XML is sufficient. Close any session you started when finished.
-8. Run `npm run typecheck` and `npm run format:check` after editing. Do not run device tests unless the app and device environment are available.
+8. Run `npm run typecheck`, `npm run lint`, and `npm run format:check` after editing (the same checks as the pre-commit hook). Do not run device tests unless the app and device environment are available.
 
 ## Output
 
 - Create or update only `test/page-objects/<camelCaseName>Page.ts`, unless the user explicitly requests other changes or a base-page change is strictly required.
 - End new page objects with `export default new <ClassName>();`.
 - Summarize the selectors and methods added, noting whether each selector came from the provided XML or was confirmed against a live session. Report validation checks run and any blockers.
-- Remind the user to run `npm run typecheck` and `npm run format:check`.
+- If any check could not be run, remind the user to run `npm run typecheck`, `npm run lint`, and `npm run format:check`.
 
 ## Constraints
 
